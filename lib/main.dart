@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/constants/app_sizes.dart';
 import 'core/constants/app_texts.dart';
 import 'core/constants/app_themes.dart';
+import 'core/navigation/pager.dart';
 
 void main() {
   runApp(const GroceryApp());
@@ -22,8 +23,7 @@ class GroceryApp extends StatelessWidget {
         title: AppTexts.appName,
         debugShowCheckedModeBanner: false,
         theme: AppThemes.light,
-        // TODO: replace with `Pager.splash` once the splash page is built.
-        home: const Scaffold(),
+        home: Pager.splash,
       ),
     );
   }
