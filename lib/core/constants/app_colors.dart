@@ -33,5 +33,15 @@ abstract final class AppColors {
 
   // Misc
   static const Color star = Color(0xFFFFC107);
+  static const Color ringTrack = Color(0xFFF2F2F2);
+
+  /// Welcome photo fade: clear for the top ~44 %, then down to black.
+  static const List<Color> welcomeGradient = [
+    Color(0x00FFFFFF),
+    Color(0x00FFFFFF),
+    Color(0x008F8F8F),
+    Color(0xFF000000),
+  ];
+  static const List<double> welcomeGradientStops = [0, 0.2, 0.44, 1];
   static const Color shadow = Color(0x1A40AA54);
 }

@@ -4,6 +4,19 @@ abstract final class AppTexts {
   static const String appName = 'eGrocery';
   static const String appSlogan = 'your daily needs';
 
+  // Onboarding
+  static const String onboardCategoryTitle = 'Browse all the category';
+  static const String onboardDiscountTitle = 'Amazing Discounts & Offers';
+  static const String onboardDeliveryTitle = 'Delivery in 30 Min';
+  static const String onboardDescription =
+      'In aliquip aute exercitation ut et nisi ut mollit. Deserunt dolor elit pariatur aute .';
+
+  // Welcome
+  static const String welcomeTo = 'Welcome to our';
+  static const String eGrocery = 'E-Grocery';
+  static const String continueWithEmailOrPhone = 'Continue with Email or Phone';
+  static const String createAnAccount = 'Create an account';
+
   // Buttons
   static const String logIn = 'Log In';
   static const String signUp = 'Sign up';

@@ -15,7 +15,7 @@ abstract final class AppSizes {
   static const double radius24 = 24;
 
   // Heights
-  static const double buttonHeight = 60;
+  static const double buttonHeight = 56;
   static const double inputHeight = 50;
   static const double appBarHeight = 64;
   static const double counterSize = 34;
