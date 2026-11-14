@@ -19,12 +19,15 @@ abstract final class AppTextStyles {
         height: height,
       );
 
-  // Display: "Welcome Back to our grocery shop", "Choose a Category"
+  // Display: "Welcome to our E-Grocery" (login options), "Welcome Back to
+  // our grocery shop", "Choose a Category"
+  static TextStyle get display36Bold => _style(36, FontWeight.w700, height: 1.3);
   static TextStyle get display32Bold => _style(32, FontWeight.w700, height: 1.25);
 
   // Headlines: product name, onboarding title, "Log In"
   static TextStyle get headline24Bold => _style(24, FontWeight.w700);
   static TextStyle get headline24SemiBold => _style(24, FontWeight.w600);
+  static TextStyle get headline24BoldTight => _style(24, FontWeight.w700, height: 1.3);
 
   // App bar title, big prices
   static TextStyle get title20Bold => _style(20, FontWeight.w700);

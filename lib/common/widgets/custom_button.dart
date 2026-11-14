@@ -17,6 +17,7 @@ class CustomButton extends StatelessWidget {
     this.isLoading = false,
     this.backgroundColor = AppColors.primary,
     this.textStyle,
+    this.hasShadow = false,
   });
 
   final String text;
@@ -27,12 +28,23 @@ class CustomButton extends StatelessWidget {
   final Color backgroundColor;
   final TextStyle? textStyle;
 
+  /// Soft green glow under the button (Login screen).
+  final bool hasShadow;
+
   @override
   Widget build(BuildContext context) {
     final enabled = onTap != null && !isLoading;
-    return SizedBox(
+    return Container(
       width: width ?? double.infinity,
       height: height ?? AppSizes.buttonHeight.h,
+      decoration: hasShadow && enabled
+          ? BoxDecoration(
+              borderRadius: BorderRadius.circular(AppSizes.radius16.r),
+              boxShadow: [
+                BoxShadow(color: AppColors.shadow, blurRadius: 16.r, offset: Offset(0, 8.h)),
+              ],
+            )
+          : null,
       child: Material(
         color: enabled ? backgroundColor : AppColors.disabled,
         borderRadius: BorderRadius.circular(AppSizes.radius16.r),

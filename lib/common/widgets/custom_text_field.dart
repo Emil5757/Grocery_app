@@ -24,6 +24,8 @@ class CustomTextField extends StatefulWidget {
     this.onTap,
     this.suffix,
     this.maxLines = 1,
+    this.fillColor = AppColors.white,
+    this.borderColor = AppColors.border,
   });
 
   final String? label;
@@ -40,6 +42,11 @@ class CustomTextField extends StatefulWidget {
   final Widget? suffix;
   final int maxLines;
 
+  /// White + grey border (Profile, Sign up) by default. The Login screen uses
+  /// `fillColor: AppColors.background, borderColor: AppColors.transparent`.
+  final Color fillColor;
+  final Color borderColor;
+
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
 }
@@ -48,7 +55,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   late bool _obscure = widget.isPassword;
 
   OutlineInputBorder _border(Color color) => OutlineInputBorder(
-        borderRadius: BorderRadius.circular(AppSizes.radius8.r),
+        borderRadius: BorderRadius.circular(AppSizes.radius12.r),
         borderSide: BorderSide(color: color),
       );
 
@@ -59,7 +66,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
       mainAxisSize: MainAxisSize.min,
       children: [
         if (widget.label != null) ...[
-          Text(widget.label!, style: AppTextStyles.label14Grey),
+          Text(
+            widget.label!,
+            style: AppTextStyles.body16Regular.copyWith(color: AppColors.textGrey),
+          ),
           10.verticalSpace,
         ],
         TextFormField(
@@ -79,10 +89,10 @@ class _CustomTextFieldState extends State<CustomTextField> {
             hintText: widget.hint,
             hintStyle: AppTextStyles.body16Regular.copyWith(color: AppColors.textGrey),
             filled: true,
-            fillColor: AppColors.white,
-            contentPadding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-            border: _border(AppColors.border),
-            enabledBorder: _border(AppColors.border),
+            fillColor: widget.fillColor,
+            contentPadding: EdgeInsets.symmetric(horizontal: 30.w, vertical: 16.h),
+            border: _border(widget.borderColor),
+            enabledBorder: _border(widget.borderColor),
             focusedBorder: _border(AppColors.primary),
             errorBorder: _border(AppColors.error),
             focusedErrorBorder: _border(AppColors.error),

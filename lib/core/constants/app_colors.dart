@@ -31,6 +31,12 @@ abstract final class AppColors {
   static const Color delivered = primary;
   static const Color error = Color(0xFFFF2020);
 
+  // Social brands
+  static const Color apple = Color(0xFF333333);
+  static const Color google = Color(0xFFDD4B39);
+  static const Color twitter = Color(0xFF55ACEE);
+  static const Color facebook = Color(0xFF3B5998);
+
   // Misc
   static const Color star = Color(0xFFFFC107);
   static const Color ringTrack = Color(0xFFF2F2F2);
