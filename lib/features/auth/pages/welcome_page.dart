@@ -8,6 +8,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
+import '../../../core/navigation/go.dart';
+import '../../../core/navigation/pager.dart';
 
 /// "Welcome to our E-Grocery" with the groceries photo and the two entry
 /// buttons ("Login or signup" in the designs).
@@ -59,8 +61,7 @@ class WelcomePage extends StatelessWidget {
                     const Spacer(),
                     CustomButton(
                       text: AppTexts.continueWithEmailOrPhone,
-                      // TODO: Go.to(context, Pager.login) once the login page exists.
-                      onTap: () {},
+                      onTap: () => Go.to(context, Pager.loginOptions),
                     ),
                     20.verticalSpace,
                     CustomButton(

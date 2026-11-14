@@ -17,8 +17,17 @@ abstract final class AppTexts {
   static const String continueWithEmailOrPhone = 'Continue with Email or Phone';
   static const String createAnAccount = 'Create an account';
 
+  // Login
+  static const String loginWithEmail = 'Login With Email';
+  static const String or = 'OR';
+  static const String google = 'Google';
+  static const String apple = 'Apple';
+  static const String forgetPassword = 'Forget Password?';
+  static const String dontHaveAccount = 'Don’t Have Account?';
+
   // Buttons
   static const String logIn = 'Log In';
+  static const String login = 'Login';
   static const String signUp = 'Sign up';
   static const String verify = 'Verify';
   static const String save = 'Save';
