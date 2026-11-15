@@ -68,8 +68,7 @@ class WelcomePage extends StatelessWidget {
                       text: AppTexts.createAnAccount,
                       backgroundColor: AppColors.white,
                       textStyle: AppTextStyles.button18Bold.copyWith(color: AppColors.textPrimary),
-                      // TODO: Go.to(context, Pager.signUp) once the sign up page exists.
-                      onTap: () {},
+                      onTap: () => Go.to(context, Pager.signUp),
                     ),
                     30.verticalSpace,
                   ],

@@ -22,6 +22,9 @@ abstract final class AppAssets {
   static const String onboardingSaleBadge = '$_images/onboarding_sale_badge.svg';
   static const String onboardingDelivery = '$_images/onboarding_delivery.svg';
 
+  // Auth illustrations
+  static const String verificationMailbox = '$_images/verification_mailbox.svg';
+
   // Photos
   static const String welcomeBackground = '$_images/welcome_background.png';
 }
