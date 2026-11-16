@@ -13,7 +13,9 @@ import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/navigation/go.dart';
 import '../../../core/utils/validator_utils.dart';
+import '../widgets/verified_dialog.dart';
 
 /// "Number verification": mailbox illustration, four digit boxes, Resend
 /// link and Verify. Verify stays disabled until all four digits are in.
@@ -32,7 +34,15 @@ class _NumberVerificationPageState extends State<NumberVerificationPage> {
   void _verify() {
     context.hideKeyboard();
     if (!_isComplete) return;
-    // TODO: Go.removeAll(context, Pager.main) once the main page exists.
+    Go.dialog(
+      context,
+      VerifiedDialog(
+        // TODO: Go.removeAll(context, Pager.main) once the main page exists.
+        onBrowseHome: () => Go.back(context),
+      ),
+      dismissible: false,
+      barrierColor: AppColors.dialogBarrier,
+    );
   }
 
   // TODO: request a new code once a backend exists.
@@ -56,7 +66,7 @@ class _NumberVerificationPageState extends State<NumberVerificationPage> {
                   Text(
                     AppTexts.enterYourCode,
                     textAlign: TextAlign.center,
-                    style: AppTextStyles.title20Regular,
+                    style: AppTextStyles.section18Regular,
                   ),
                   20.verticalSpace,
                   Container(

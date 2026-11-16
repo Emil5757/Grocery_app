@@ -22,6 +22,9 @@ abstract final class AppColors {
   static const Color border = Color(0xFFE0E0E0);
   static const Color disabled = Color(0xFFECECEC);
   static const Color overlay = Color(0x66000000);
+
+  /// Dim behind popups ("Verified!!"): turns #F7F7F7 into #BBBBBB.
+  static const Color dialogBarrier = Color(0x3D000000);
   static const Color transparent = Colors.transparent;
 
   // Status (order tracking)
