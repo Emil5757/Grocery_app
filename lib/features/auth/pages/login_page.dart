@@ -11,6 +11,8 @@ import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/navigation/go.dart';
+import '../../../core/navigation/pager.dart';
 import '../../../core/utils/validator_utils.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/social_outlined_button.dart';
@@ -126,8 +128,7 @@ class _LoginPageState extends State<LoginPage> {
                   CustomRichTextAction(
                     text: AppTexts.dontHaveAccount,
                     actionText: AppTexts.signUp,
-                    // TODO: Go.replace(context, Pager.signUp) once it exists.
-                    onTap: () {},
+                    onTap: () => Go.replace(context, Pager.signUp),
                   ),
                   30.verticalSpace,
                 ],

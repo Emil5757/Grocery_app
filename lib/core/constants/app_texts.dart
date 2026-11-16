@@ -25,6 +25,16 @@ abstract final class AppTexts {
   static const String forgetPassword = 'Forget Password?';
   static const String dontHaveAccount = 'Don’t Have Account?';
 
+  // Sign up
+  static const String welcomeToGroceryShop = 'Welcome to our\ngrocery shop';
+  static const String signUpTitle = 'Sign Up';
+  static const String alreadyHaveAccount = 'Already Have Account?';
+
+  // Number verification (copy kept as in the design)
+  static const String enterYourCode = 'Entry Your 4 digit code';
+  static const String didntGetCode = 'Did you don’t get code?';
+  static const String codeResent = 'A new code has been sent';
+
   // Buttons
   static const String logIn = 'Log In';
   static const String login = 'Login';
@@ -40,6 +50,7 @@ abstract final class AppTexts {
   static const String resend = 'Resend';
 
   // Fields
+  static const String name = 'Name';
   static const String phoneNumber = 'Phone Number';
   static const String password = 'Password';
   static const String search = 'Search';
