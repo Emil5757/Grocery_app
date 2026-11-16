@@ -34,6 +34,23 @@ abstract final class AppTexts {
   static const String enterYourCode = 'Entry Your 4 digit code';
   static const String didntGetCode = 'Did you don’t get code?';
   static const String codeResent = 'A new code has been sent';
+  static const String verified = 'Verified!!';
+  static const String verifiedMessage = 'Hurrah!!  You have successfully\nverified the account.';
+  static const String browseHome = 'Browse Home';
+
+  // Forget password
+  static const String forgetPasswordTitle = 'Forget Password';
+  static const String resetYourPassword = 'Reset your password';
+  static const String resetPasswordDescription =
+      'Please enter your number. We will send a code to your phone to reset your password.';
+  static const String sendMeLink = 'Send Me Link';
+
+  // New password
+  static const String newPasswordTitle = 'New Password';
+  static const String addNewPassword = 'Add New password';
+  static const String newPassword = 'New Password';
+  static const String retypePassword = 'Retype Password';
+  static const String passwordUpdated = 'Your password has been updated';
 
   // Buttons
   static const String logIn = 'Log In';
@@ -48,6 +65,7 @@ abstract final class AppTexts {
   static const String reset = 'Reset';
   static const String seeAll = 'See All';
   static const String resend = 'Resend';
+  static const String done = 'Done';
 
   // Fields
   static const String name = 'Name';

@@ -16,8 +16,11 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     this.onBack,
     this.actions,
     this.showDivider = true,
+    this.height = AppSizes.appBarHeight,
   });
 
+  /// Toolbar height in design units (Forget / New Password use 56).
+  final double height;
   final String title;
   final bool showBack;
   final VoidCallback? onBack;
@@ -25,12 +28,12 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final bool showDivider;
 
   @override
-  Size get preferredSize => Size.fromHeight(AppSizes.appBarHeight.h);
+  Size get preferredSize => Size.fromHeight(height.h + (showDivider ? 1 : 0));
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      toolbarHeight: AppSizes.appBarHeight.h,
+      toolbarHeight: height.h,
       automaticallyImplyLeading: false,
       leading: showBack
           ? IconButton(

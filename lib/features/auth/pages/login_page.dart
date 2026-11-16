@@ -13,6 +13,7 @@ import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/navigation/go.dart';
 import '../../../core/navigation/pager.dart';
+import '../../../core/utils/input_formatters.dart';
 import '../../../core/utils/validator_utils.dart';
 import '../widgets/auth_header.dart';
 import '../widgets/social_outlined_button.dart';
@@ -67,7 +68,8 @@ class _LoginPageState extends State<LoginPage> {
                     label: AppTexts.phoneNumber,
                     controller: _phoneController,
                     validator: ValidatorUtils.phone,
-                    keyboardType: TextInputType.phone,
+                    keyboardType: TextInputType.number,
+                    inputFormatters: AppInputFormatters.phone,
                     textInputAction: TextInputAction.next,
                     fillColor: AppColors.background,
                     borderColor: AppColors.transparent,
@@ -86,8 +88,7 @@ class _LoginPageState extends State<LoginPage> {
                   Align(
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
-                      // TODO: Go.to(context, Pager.forgetPassword) once it exists.
-                      onTap: () {},
+                      onTap: () => Go.to(context, Pager.forgetPassword),
                       child: Text(AppTexts.forgetPassword, style: AppTextStyles.body16Regular),
                     ),
                   ),
