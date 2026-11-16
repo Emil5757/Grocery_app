@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../../common/models/category_model.dart';
 import '../../common/models/pack_model.dart';
 import '../../common/models/product_model.dart';
+import '../../features/auth/pages/forget_password_page.dart';
 import '../../features/auth/pages/login_options_page.dart';
 import '../../features/auth/pages/login_page.dart';
+import '../../features/auth/pages/new_password_page.dart';
 import '../../features/auth/pages/number_verification_page.dart';
 import '../../features/auth/pages/sign_up_page.dart';
 import '../../features/auth/pages/welcome_page.dart';
@@ -35,8 +37,9 @@ import '../../features/wishlist/pages/favorite_page.dart';
 /// Flow: splash -replace-> onboarding -replace-> welcome
 ///       welcome -to-> loginOptions -to-> login
 ///       welcome -to-> signUp <-replace-> login
-///       signUp -to-> numberVerification
-///       login / numberVerification -removeAll-> main
+///       signUp -to-> numberVerification (Verify -> "Verified!!" dialog)
+///       login -to-> forgetPassword -to-> newPassword -removeAll-> login
+///       login / "Verified!!" dialog -removeAll-> main
 ///       main tabs: home | category | favorites | (profile)
 ///       home -to-> search -to-> searchResult -to-> productDetails
 ///       home -to-> popularPack -to-> createMyPack -to-> bundleDetails -replace-> cart
@@ -51,6 +54,8 @@ abstract final class Pager {
   static const Widget login = LoginPage();
   static const Widget signUp = SignUpPage();
   static const Widget numberVerification = NumberVerificationPage();
+  static const Widget forgetPassword = ForgetPasswordPage();
+  static const Widget newPassword = NewPasswordPage();
 
   // Shell and its tabs
   static const Widget main = MainPage();

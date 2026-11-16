@@ -12,6 +12,7 @@ abstract final class AppAssets {
   static const String icGoogleCircle = '$_icons/ic_google_circle.svg';
   static const String icTwitter = '$_icons/ic_twitter.svg';
   static const String icFacebook = '$_icons/ic_facebook.svg';
+  static const String icVerifiedCheck = '$_icons/ic_verified_check.svg';
   static const String icCartOutline = '$_icons/ic_cart_outline.svg';
   static const String icBag = '$_icons/ic_bag.svg';
   static const String icFilter = '$_icons/ic_filter.svg';

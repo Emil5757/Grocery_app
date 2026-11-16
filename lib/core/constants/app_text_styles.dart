@@ -22,12 +22,11 @@ abstract final class AppTextStyles {
   // Display: "Welcome to our E-Grocery" (login options), "Welcome Back to
   // our grocery shop", "Choose a Category"
   static TextStyle get display36Bold => _style(36, FontWeight.w700, height: 1.3);
-  // "Welcome to our / grocery shop" (Sign Up): same size, tighter lines.
-  static TextStyle get display36BoldTight => _style(36, FontWeight.w700, height: 1.1);
+  // "Welcome to our / grocery shop" (Sign Up)
   static TextStyle get display32Bold => _style(32, FontWeight.w700, height: 1.25);
 
-  // Headlines: product name, onboarding title, "Log In"
-  static TextStyle get headline28Bold => _style(28, FontWeight.w700);
+  // Headlines: product name, onboarding title, "Log In", "Sign Up",
+  // "Verified!!", "Reset your password", "Add New password"
   static TextStyle get headline24Bold => _style(24, FontWeight.w700);
   static TextStyle get headline24SemiBold => _style(24, FontWeight.w600);
   static TextStyle get headline24BoldTight => _style(24, FontWeight.w700, height: 1.3);
@@ -54,6 +53,10 @@ abstract final class AppTextStyles {
   static TextStyle get body16Grey =>
       _style(16, FontWeight.w400, color: AppColors.textGrey, height: 1.5);
 
+  // Grey paragraph under a heading ("Hurrah!! ...", "Please enter your number ...")
+  static TextStyle get body16GreyCompact =>
+      _style(16, FontWeight.w400, color: AppColors.textGrey, height: 1.4);
+
   // Small: labels, weights, nav labels
   static TextStyle get label14Medium => _style(14, FontWeight.w500);
   static TextStyle get label14Regular => _style(14, FontWeight.w400);
@@ -67,7 +70,7 @@ abstract final class AppTextStyles {
   static TextStyle get button16SemiBold => _style(16, FontWeight.w600, color: AppColors.white);
 
   // OTP digits (Number verification)
-  static TextStyle get otp32Regular => _style(32, FontWeight.w400);
+  static TextStyle get otp28Regular => _style(28, FontWeight.w400);
 
   // Prices
   static TextStyle get price28Bold => _style(28, FontWeight.w700, color: AppColors.primary);

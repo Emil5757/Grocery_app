@@ -80,7 +80,7 @@ class _CustomOtpFieldState extends State<CustomOtpField> {
             maxLength: 1,
             showCursor: false,
             inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-            style: AppTextStyles.otp32Regular,
+            style: AppTextStyles.otp28Regular,
             decoration: InputDecoration(
               counterText: '',
               filled: true,

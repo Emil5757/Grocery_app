@@ -20,8 +20,18 @@ abstract final class Go {
         builder: (_) => child,
       );
 
-  static Future<T?> dialog<T>(BuildContext context, Widget child) =>
-      showDialog<T>(context: context, builder: (_) => child);
+  static Future<T?> dialog<T>(
+    BuildContext context,
+    Widget child, {
+    bool dismissible = true,
+    Color? barrierColor,
+  }) =>
+      showDialog<T>(
+        context: context,
+        barrierDismissible: dismissible,
+        barrierColor: barrierColor,
+        builder: (_) => child,
+      );
 
   static MaterialPageRoute<T> _route<T>(Widget page) =>
       MaterialPageRoute<T>(builder: (_) => page);

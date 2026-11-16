@@ -13,6 +13,7 @@ import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/navigation/go.dart';
 import '../../../core/navigation/pager.dart';
+import '../../../core/utils/input_formatters.dart';
 import '../../../core/utils/validator_utils.dart';
 
 /// "Welcome to our grocery shop": Name, Phone Number, Password on a white
@@ -66,7 +67,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 64.verticalSpace,
                 Padding(
                   padding: EdgeInsets.only(left: 14.w),
-                  child: Text(AppTexts.welcomeToGroceryShop, style: AppTextStyles.display36BoldTight),
+                  child: Text(AppTexts.welcomeToGroceryShop, style: AppTextStyles.display32Bold),
                 ),
                 44.verticalSpace,
                 CustomWhiteCard(
@@ -94,9 +95,9 @@ class _SignUpPageState extends State<SignUpPage> {
                           label: AppTexts.phoneNumber,
                           controller: _phoneController,
                           validator: ValidatorUtils.phone,
-                          keyboardType: TextInputType.phone,
+                          keyboardType: TextInputType.number,
                           textInputAction: TextInputAction.next,
-                          inputFormatters: [FilteringTextInputFormatter.allow(RegExp(r'[0-9+ ]'))],
+                          inputFormatters: AppInputFormatters.phone,
                           fillColor: AppColors.background,
                         ),
                         24.verticalSpace,
@@ -111,7 +112,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(AppTexts.signUpTitle, style: AppTextStyles.headline28Bold),
+                            Text(AppTexts.signUpTitle, style: AppTextStyles.headline24Bold),
                             CustomArrowButton(onTap: _signUp),
                           ],
                         ),

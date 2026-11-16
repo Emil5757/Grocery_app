@@ -20,6 +20,7 @@ class CustomTextField extends StatefulWidget {
     this.textInputAction,
     this.inputFormatters,
     this.isPassword = false,
+    this.showVisibilityToggle = true,
     this.readOnly = false,
     this.onTap,
     this.suffix,
@@ -37,6 +38,9 @@ class CustomTextField extends StatefulWidget {
   final TextInputAction? textInputAction;
   final List<TextInputFormatter>? inputFormatters;
   final bool isPassword;
+
+  /// The eye button on password fields. New Password hides it, per design.
+  final bool showVisibilityToggle;
   final bool readOnly;
   final VoidCallback? onTap;
   final Widget? suffix;
@@ -97,7 +101,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
             errorBorder: _border(AppColors.error),
             focusedErrorBorder: _border(AppColors.error),
             errorStyle: AppTextStyles.caption12Regular.copyWith(color: AppColors.error),
-            suffixIcon: widget.isPassword
+            suffixIcon: widget.isPassword && widget.showVisibilityToggle
                 ? IconButton(
                     onPressed: () => setState(() => _obscure = !_obscure),
                     icon: Icon(
