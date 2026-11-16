@@ -42,7 +42,11 @@ abstract final class AppColors {
 
   // Misc
   static const Color star = Color(0xFFFFC107);
+  static const Color starEmpty = Color(0xFFE0E0E0);
   static const Color ringTrack = Color(0xFFF2F2F2);
+  static const Color banner = Color(0xFFD5F0DB);
+  static const Color cashNote = Color(0xFF7CAAE0);
+  static const Color navShadow = Color(0x14000000);
 
   /// Welcome photo fade: clear for the top ~44 %, then down to black.
   static const List<Color> welcomeGradient = [

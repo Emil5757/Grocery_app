@@ -17,18 +17,20 @@ class CustomRatingStars extends StatelessWidget {
   final double size;
   final ValueChanged<int>? onChanged;
 
-  IconData _iconFor(int index) {
-    if (rating >= index + 1) return Icons.star_rounded;
-    if (rating > index) return Icons.star_half_rounded;
-    return Icons.star_outline_rounded;
-  }
+  IconData _iconFor(int index) => rating > index && rating < index + 1
+      ? Icons.star_half_rounded
+      : Icons.star_rounded;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: List.generate(5, (i) {
-        final star = Icon(_iconFor(i), color: AppColors.star, size: size.r);
+        final star = Icon(
+          _iconFor(i),
+          color: rating > i ? AppColors.star : AppColors.starEmpty,
+          size: size.r,
+        );
         return onChanged == null
             ? star
             : GestureDetector(onTap: () => onChanged!(i + 1), child: star);

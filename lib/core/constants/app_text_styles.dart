@@ -36,6 +36,9 @@ abstract final class AppTextStyles {
   static TextStyle get title20SemiBold => _style(20, FontWeight.w600);
   static TextStyle get title20Regular => _style(20, FontWeight.w400);
 
+  // Home banner: "Order your Daily Groceries"
+  static TextStyle get banner22Bold => _style(22, FontWeight.w700, height: 1.3);
+
   // Section titles: "Product Details", "Add Coupon", "Sort By"
   static TextStyle get section18Bold => _style(18, FontWeight.w700);
   static TextStyle get section18SemiBold => _style(18, FontWeight.w600);
@@ -43,6 +46,7 @@ abstract final class AppTextStyles {
   static TextStyle get section18Regular => _style(18, FontWeight.w400);
 
   // Body: list rows, inputs, product names
+  static TextStyle get body16Bold => _style(16, FontWeight.w700);
   static TextStyle get body16SemiBold => _style(16, FontWeight.w600);
   static TextStyle get body16Medium => _style(16, FontWeight.w500);
   static TextStyle get body16Regular => _style(16, FontWeight.w400);
@@ -75,4 +79,7 @@ abstract final class AppTextStyles {
         decoration: TextDecoration.lineThrough,
         decorationColor: AppColors.textPrimary,
       );
+  // Small struck price next to pack prices ("50.32")
+  static TextStyle get oldPrice12Grey => _style(12, FontWeight.w400, color: AppColors.textGrey)
+      .copyWith(decoration: TextDecoration.lineThrough, decorationColor: AppColors.textGrey);
 }

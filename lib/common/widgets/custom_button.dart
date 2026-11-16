@@ -18,6 +18,7 @@ class CustomButton extends StatelessWidget {
     this.backgroundColor = AppColors.primary,
     this.textStyle,
     this.hasShadow = false,
+    this.icon,
   });
 
   final String text;
@@ -31,6 +32,9 @@ class CustomButton extends StatelessWidget {
   /// Soft green glow under the button (Login screen).
   final bool hasShadow;
 
+  /// Optional leading icon ("Create Own Pack" bag).
+  final Widget? icon;
+
   @override
   Widget build(BuildContext context) {
     final enabled = onTap != null && !isLoading;
@@ -41,7 +45,11 @@ class CustomButton extends StatelessWidget {
           ? BoxDecoration(
               borderRadius: BorderRadius.circular(AppSizes.radius16.r),
               boxShadow: [
-                BoxShadow(color: AppColors.shadow, blurRadius: 16.r, offset: Offset(0, 8.h)),
+                BoxShadow(
+                  color: AppColors.shadow,
+                  blurRadius: 16.r,
+                  offset: Offset(0, 8.h),
+                ),
               ],
             )
           : null,
@@ -60,11 +68,18 @@ class CustomButton extends StatelessWidget {
                       color: AppColors.white,
                     ),
                   )
-                : Text(
-                    text,
-                    style: (textStyle ?? AppTextStyles.button18Bold).copyWith(
-                      color: enabled ? null : AppColors.textGrey,
-                    ),
+                : Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (icon != null) ...[icon!, 14.horizontalSpace],
+                      Text(
+                        text,
+                        style: (textStyle ?? AppTextStyles.button18Bold)
+                            .copyWith(
+                              color: enabled ? null : AppColors.textGrey,
+                            ),
+                      ),
+                    ],
                   ),
           ),
         ),

@@ -14,6 +14,7 @@ import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/navigation/go.dart';
+import '../../../core/navigation/pager.dart';
 import '../../../core/utils/validator_utils.dart';
 import '../widgets/verified_dialog.dart';
 
@@ -37,8 +38,7 @@ class _NumberVerificationPageState extends State<NumberVerificationPage> {
     Go.dialog(
       context,
       VerifiedDialog(
-        // TODO: Go.removeAll(context, Pager.main) once the main page exists.
-        onBrowseHome: () => Go.back(context),
+        onBrowseHome: () => Go.removeAll(context, Pager.main),
       ),
       dismissible: false,
       barrierColor: AppColors.dialogBarrier,

@@ -58,6 +58,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/images/
+    - assets/images/products/
 
   # Gilroy (Radomir Tinkov) is a commercial font, so the files are not committed.
   # Put licensed files in assets/fonts/gilroy/ with these names, then uncomment.

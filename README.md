@@ -51,7 +51,10 @@ lib/
 │   │   └── pager.dart   registry of every page
 │   └── utils/
 │       └── validator_utils.dart   required, phone, password, confirmPassword, otp
-├── common/widgets/         design-system widgets used by 2+ features
+├── common/
+│   ├── widgets/            design-system widgets used by 2+ features
+│   ├── models/             data shared by many features: ProductModel, PackModel, CategoryModel
+│   └── cubits/cart/        CartCubit, app-wide (provided above MaterialApp in main.dart)
 └── features/<domain>/
     ├── pages/              <name>_page.dart, one screen each
     ├── widgets/            pieces only this feature uses
@@ -66,11 +69,13 @@ lib/
 | `splash` | Onboarding (green logo screen) |
 | `onboarding` | Onboarding (1)–(3) |
 | `auth` | Login or signup, Log In, Sign up, Number verification, Verification Successful, Forget Password, New Password, Error pages |
-| `main` | Bottom nav shell (Home, Menu, Save, Profile, centre cart button) and Drawer |
+| `main` | Bottom nav shell (Home, Menu, Save, Profile, centre basket → cart). Tab bodies come from `Pager` |
+| `home` | Home tab: search, banner, Popular Pack row, Our New Item grid |
 | `category` | Category, Vegetable Category |
 | `search` | Search, Search result, Filter Popup / Full |
-| `product` | Product details, Bundle Details, Review page, Comments |
-| `cart` | Cart page, Empty Cart, coupons |
+| `product` | Product details, New Item, Review page, Comments |
+| `pack` | Popular Pack, pack (bundle) details, Create My Pack, Bundle Details |
+| `cart` | Cart page, Empty Cart, coupons (demo code `EGROCERY` = 15% off) |
 | `checkout` | Checkout, Delivery Address, New Address, Payment Method, Order Successfully, Sorry Order is Failed |
 | `orders` | My Order (All / Running / Previous), My Order Details, Order Tracking, No order yet, Delivered Successful |
 | `wishlist` | Favorite list, Empty wishlist |
