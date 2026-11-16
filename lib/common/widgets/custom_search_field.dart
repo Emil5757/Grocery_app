@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../core/constants/app_assets.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/extensions/color_extensions.dart';
 import '../../core/constants/app_sizes.dart';
 import '../../core/constants/app_text_styles.dart';
 import '../../core/constants/app_texts.dart';
@@ -43,7 +46,10 @@ class CustomSearchField extends StatelessWidget {
 
     return Container(
       height: AppSizes.inputHeight.h,
-      decoration: BoxDecoration(color: AppColors.background, borderRadius: radius),
+      decoration: BoxDecoration(
+        color: AppColors.background,
+        borderRadius: radius,
+      ),
       child: Row(
         children: [
           Expanded(
@@ -60,7 +66,10 @@ class CustomSearchField extends StatelessWidget {
                 hintText: hint,
                 hintStyle: AppTextStyles.body16Regular,
                 border: InputBorder.none,
-                contentPadding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 14.h),
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal: 20.w,
+                  vertical: 14.h,
+                ),
                 prefixIcon: hasFilter ? searchIcon : null,
                 suffixIcon: hasFilter ? null : searchIcon,
               ),
@@ -68,7 +77,7 @@ class CustomSearchField extends StatelessWidget {
           ),
           if (hasFilter)
             Material(
-              color: AppColors.primaryDark,
+              color: AppColors.primary,
               borderRadius: radius,
               child: InkWell(
                 onTap: onFilterTap,
@@ -76,7 +85,13 @@ class CustomSearchField extends StatelessWidget {
                 child: SizedBox(
                   width: AppSizes.inputHeight.h,
                   height: AppSizes.inputHeight.h,
-                  child: Icon(Icons.tune, color: AppColors.white, size: AppSizes.icon24.r),
+                  child: Center(
+                    child: SvgPicture.asset(
+                      AppAssets.icFilter,
+                      width: AppSizes.icon24.r,
+                      colorFilter: AppColors.white.toColorFilter,
+                    ),
+                  ),
                 ),
               ),
             ),

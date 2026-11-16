@@ -13,6 +13,8 @@ import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
+import '../../../core/navigation/go.dart';
+import '../../../core/navigation/pager.dart';
 import '../../../core/utils/validator_utils.dart';
 
 /// "Number verification": mailbox illustration, four digit boxes, Resend
@@ -32,7 +34,7 @@ class _NumberVerificationPageState extends State<NumberVerificationPage> {
   void _verify() {
     context.hideKeyboard();
     if (!_isComplete) return;
-    // TODO: Go.removeAll(context, Pager.main) once the main page exists.
+    Go.removeAll(context, Pager.main);
   }
 
   // TODO: request a new code once a backend exists.

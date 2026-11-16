@@ -27,4 +27,21 @@ abstract final class ValidatorUtils {
       (value == null || !RegExp('^[0-9]{$length}\$').hasMatch(value))
           ? AppTexts.invalidOtp
           : null;
+
+  static String? cardNumber(String? value) {
+    final digits = value?.replaceAll(RegExp(r'\s'), '') ?? '';
+    if (digits.isEmpty) return AppTexts.fieldRequired;
+    return RegExp(r'^[0-9]{13,19}$').hasMatch(digits) ? null : AppTexts.invalidCardNumber;
+  }
+
+  /// DD/MM/YYYY, as in the checkout design ("05/09/2021").
+  static String? expiryDate(String? value) {
+    if (value == null || value.isEmpty) return AppTexts.fieldRequired;
+    return RegExp(r'^\d{2}/\d{2}/\d{4}$').hasMatch(value) ? null : AppTexts.invalidExpiry;
+  }
+
+  static String? cvv(String? value) {
+    if (value == null || value.isEmpty) return AppTexts.fieldRequired;
+    return RegExp(r'^\d{3,4}$').hasMatch(value) ? null : AppTexts.invalidCvv;
+  }
 }

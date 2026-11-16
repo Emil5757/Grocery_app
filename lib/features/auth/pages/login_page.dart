@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
   void _login() {
     context.hideKeyboard();
     if (!_formKey.currentState!.validate()) return;
-    // TODO: Go.removeAll(context, Pager.main) once the main page exists.
+    Go.removeAll(context, Pager.main);
   }
 
   @override
