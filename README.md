@@ -54,7 +54,8 @@ lib/
 ├── common/
 │   ├── widgets/            design-system widgets used by 2+ features
 │   ├── models/             data shared by many features: ProductModel, PackModel, CategoryModel
-│   └── cubits/cart/        CartCubit, app-wide (provided above MaterialApp in main.dart)
+│   └── cubits/             app-wide state, provided above MaterialApp in main.dart:
+│                           cart/ (CartCubit), address/ (AddressCubit)
 └── features/<domain>/
     ├── pages/              <name>_page.dart, one screen each
     ├── widgets/            pieces only this feature uses
@@ -77,10 +78,14 @@ lib/
 | `pack` | Popular Pack, pack (bundle) details, Create My Pack, Bundle Details |
 | `cart` | Cart page, Empty Cart, coupons (demo code `EGROCERY` = 15% off) |
 | `checkout` | Checkout, Delivery Address, New Address, Payment Method, Order Successfully, Sorry Order is Failed |
-| `orders` | My Order (All / Running / Previous), My Order Details, Order Tracking, No order yet, Delivered Successful |
+| `orders` | My Order (All / Running / Previous), My Order Details, Order Tracking (OpenStreetMap), Delivered Successful, No order yet |
 | `wishlist` | Favorite list, Empty wishlist |
-| `profile` | Profile, Setting, Change Password, Change phone Number, Language Setting |
-| `notification` | Notification |
+| `profile` | Profile tab, My Profile form, Setting, Change Password, Change Phone Number, Select Language |
+| `address` | Delivery Address list, New / Edit Address |
+| `coupon` | Offer And Promos (tickets and promo grid), Coupon Details (Redeem applies to the cart) |
+| `notification` | Notification list, Notification settings |
+| `review` | Review (rating summary, likes), Submit Review |
+| `error` | 404 "something wrong" page, also the app's unknown-route fallback |
 | `support` | About Us, Contact Us, FAQ, Help, Term & Conditions |
 
 ## Design tokens
@@ -161,6 +166,19 @@ Common widgets take plain values and callbacks, never feature models, so
 3. Build `features/<x>/pages/<name>_page.dart` from `Custom*` widgets first.
 4. Register it in `Pager`, then navigate with `Go.to / replace / removeAll`.
 5. Run `flutter analyze`.
+
+## Maps
+
+Order Tracking uses [`flutter_map`](https://pub.dev/packages/flutter_map) with
+OpenStreetMap tiles. Settings live in `core/constants/app_map.dart`.
+
+- The app identifies itself to the OSM tile server (`userAgentPackageName`)
+  and shows the "OpenStreetMap contributors" attribution, as the
+  [tile usage policy](https://operations.osmfoundation.org/policies/tiles/) requires.
+- The public OSM tile server is fine for development and light use. Before a
+  real release, point `AppMap.tileUrl` at a commercial or self-hosted provider.
+- The demo route (Chhatak Bazar → home) was taken once from the public OSRM
+  router and stored in `TrackingModel`, so the app makes no routing calls.
 
 ## Fonts
 

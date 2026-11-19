@@ -37,6 +37,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   flutter_screenutil: ^5.9.3
   flutter_svg: ^2.4.0
+  flutter_map: ^8.3.2
+  latlong2: ^0.10.1
 
 dev_dependencies:
   flutter_test:
@@ -59,6 +61,7 @@ flutter:
     - assets/icons/
     - assets/images/
     - assets/images/products/
+    - assets/images/avatars/
 
   # Gilroy (Radomir Tinkov) is a commercial font, so the files are not committed.
   # Put licensed files in assets/fonts/gilroy/ with these names, then uncomment.

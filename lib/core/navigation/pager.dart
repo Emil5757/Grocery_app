@@ -1,6 +1,28 @@
 import 'package:flutter/material.dart';
 
 import '../../common/models/category_model.dart';
+import '../../features/address/pages/delivery_address_page.dart';
+import '../../features/address/pages/new_address_page.dart';
+import '../../features/coupon/data/models/coupon_model.dart';
+import '../../features/coupon/pages/coupon_details_page.dart';
+import '../../features/coupon/pages/offers_page.dart';
+import '../../features/coupon/pages/promos_page.dart';
+import '../../features/error/pages/error_page.dart';
+import '../../features/orders/pages/delivered_page.dart';
+import '../../features/review/pages/review_page.dart';
+import '../../features/review/pages/submit_review_page.dart';
+import '../../features/notification/pages/notification_page.dart';
+import '../../features/notification/pages/notification_settings_page.dart';
+import '../../features/orders/data/models/order_model.dart';
+import '../../features/orders/pages/my_orders_page.dart';
+import '../../features/orders/pages/order_details_page.dart';
+import '../../features/orders/pages/order_tracking_page.dart';
+import '../../features/profile/pages/change_password_page.dart';
+import '../../features/profile/pages/change_phone_page.dart';
+import '../../features/profile/pages/edit_profile_page.dart';
+import '../../features/profile/pages/language_page.dart';
+import '../../features/profile/pages/profile_page.dart';
+import '../../features/profile/pages/setting_page.dart';
 import '../../common/models/pack_model.dart';
 import '../../common/models/product_model.dart';
 import '../../features/auth/pages/forget_password_page.dart';
@@ -40,7 +62,14 @@ import '../../features/wishlist/pages/favorite_page.dart';
 ///       signUp -to-> numberVerification (Verify -> "Verified!!" dialog)
 ///       login -to-> forgetPassword -to-> newPassword -removeAll-> login
 ///       login / "Verified!!" dialog -removeAll-> main
-///       main tabs: home | category | favorites | (profile)
+///       main tabs: home | category | favorites | profile
+///       profile -to-> myOrders -to-> orderDetails, offers -to-> couponDetails,
+///                 deliveryAddress -to-> newAddress, editProfile, notifications,
+///                 setting -to-> language / changePassword / changePhone
+///       orderSuccess / setting(Location) / notifications -to-> orderTracking
+///       productDetails / packDetails -to-> review -to-> submitReview
+///       notifications -to-> delivered -replace-> submitReview | -removeAll-> main
+///       unknown routes -> error
 ///       home -to-> search -to-> searchResult -to-> productDetails
 ///       home -to-> popularPack -to-> createMyPack -to-> bundleDetails -replace-> cart
 ///       home / popularPack -to-> packDetails -to-> cart
@@ -86,4 +115,39 @@ abstract final class Pager {
   static const Widget orderSuccess = OrderSuccessPage();
   static const Widget orderFailed = OrderFailedPage();
   static const Widget noOrders = NoOrdersPage();
+
+  // Profile & account
+  static Widget profile({VoidCallback? onBack}) => ProfilePage(onBack: onBack);
+  static const Widget editProfile = EditProfilePage();
+  static const Widget setting = SettingPage();
+  static const Widget changePassword = ChangePasswordPage();
+  static const Widget changePhone = ChangePhonePage();
+  static const Widget language = LanguagePage();
+
+  // Orders
+  static const Widget myOrders = MyOrdersPage();
+  static Widget orderDetails(OrderModel order) => OrderDetailsPage(order: order);
+  static const Widget orderTracking = OrderTrackingPage();
+
+  // Addresses
+  static const Widget deliveryAddress = DeliveryAddressPage();
+  static Widget newAddress({int? editIndex}) => NewAddressPage(editIndex: editIndex);
+
+  // Notifications
+  static const Widget notifications = NotificationPage();
+  static const Widget notificationSettings = NotificationSettingsPage();
+
+  // Coupons
+  static const Widget offers = OffersPage();
+  static const Widget promos = PromosPage();
+  static Widget couponDetails(CouponModel coupon) => CouponDetailsPage(coupon: coupon);
+
+  // Reviews
+  static const Widget review = ReviewPage();
+  static const Widget submitReview = SubmitReviewPage();
+
+  // Results
+  static const Widget delivered = DeliveredPage();
+  static Widget error({String? title, VoidCallback? onRetry}) =>
+      title == null ? ErrorPage(onRetry: onRetry) : ErrorPage(title: title, onRetry: onRetry);
 }

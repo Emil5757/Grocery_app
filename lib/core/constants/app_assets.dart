@@ -93,4 +93,45 @@ abstract final class AppAssets {
   static const String packSmallBundle = '$_products/pack_small_bundle.png';
   static const String packSmallFruits = '$_products/pack_small_fruits.png';
   static const String packVegetableBox = '$_products/pack_vegetable_box.png';
+
+  // Profile menu
+  static const String icProfileOrders = '$_icons/ic_profile_orders.svg';
+  static const String icProfileVoucher = '$_icons/ic_profile_voucher.svg';
+  static const String icProfileAddress = '$_icons/ic_profile_address.svg';
+  static const String icProfileUser = '$_icons/ic_profile_user.svg';
+  static const String icProfileBell = '$_icons/ic_profile_bell.svg';
+  static const String icProfileSetting = '$_icons/ic_profile_setting.svg';
+  static const String icProfileWallet = '$_icons/ic_profile_wallet.svg';
+  static const String icProfileLogout = '$_icons/ic_profile_logout.svg';
+
+  // Order timeline badges (coloured 40 x 40 squares)
+  static const String icOrderConfirmed = '$_icons/ic_order_confirmed.svg';
+  static const String icOrderProcessing = '$_icons/ic_order_processing.svg';
+  static const String icOrderShipped = '$_icons/ic_order_shipped.svg';
+  static const String icOrderDelivered = '$_icons/ic_order_delivered.svg';
+
+  // Order tracking
+  static const String icTrackingTime = '$_icons/ic_tracking_time.svg';
+  static const String icLocation = '$_icons/ic_location.svg';
+
+  // Notifications (white glyphs)
+  static const String icNotificationTruck = '$_icons/ic_notification_truck.svg';
+  static const String icNotificationCoupon = '$_icons/ic_notification_coupon.svg';
+
+  // Coupon card decorations
+  static const String couponWaves = '$_images/coupon_pattern_waves.svg';
+  static const String couponDots = '$_images/coupon_pattern_dots.svg';
+  static const String couponTriangles = '$_images/coupon_pattern_triangles.svg';
+  static const String couponBow = '$_images/coupon_pattern_bow.svg';
+
+  // Result illustrations
+  static const String deliveredSuccess = '$_images/delivered_success.svg';
+  static const String error404 = '$_images/error_404.svg';
+
+  // People (reviews, profile, shipper)
+  static const String _avatars = '$_images/avatars';
+  static const String avatarJenilliya = '$_avatars/avatar_1.png';
+  static const String avatarRonti = '$_avatars/avatar_2.png';
+  static const String avatarAnjelina = '$_avatars/avatar_3.png';
+  static const String avatarSaydul = '$_avatars/avatar_4.png';
 }

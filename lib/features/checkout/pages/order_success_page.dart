@@ -22,8 +22,7 @@ class OrderSuccessPage extends StatelessWidget {
           buttonText: AppTexts.continueText,
           onButtonTap: () => Go.removeAll(context, Pager.main),
           secondaryText: AppTexts.trackOrder,
-          // TODO: Go.to(context, Pager.orderTracking) once it exists.
-          onSecondaryTap: () {},
+          onSecondaryTap: () => Go.to(context, Pager.orderTracking),
         ),
       ),
     );

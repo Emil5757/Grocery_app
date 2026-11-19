@@ -51,5 +51,8 @@ class CartCubit extends Cubit<CartState> {
     return valid;
   }
 
+  /// Applies a collected voucher (Coupon Details > Redeem Now).
+  void applyDiscount(double rate) => emit(state.copyWith(discountRate: rate));
+
   void clear() => emit(const CartState());
 }

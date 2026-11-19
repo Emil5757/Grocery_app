@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/constants/app_text_styles.dart';
-import '../data/models/checkout_model.dart';
+import '../../../common/models/address_model.dart';
 
 /// Selectable delivery address with a radio dot.
 class AddressCard extends StatelessWidget {
@@ -52,9 +52,9 @@ class AddressCard extends StatelessWidget {
                 children: [
                   Text(address.title, style: AppTextStyles.body16Bold),
                   6.verticalSpace,
-                  Text(address.phone, style: grey),
-                  6.verticalSpace,
                   Text(address.address, style: grey),
+                  6.verticalSpace,
+                  Text(address.phone, style: grey),
                 ],
               ),
             ),

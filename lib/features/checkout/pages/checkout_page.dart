@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/cubits/address/address_cubit.dart';
 import '../../../common/cubits/cart/cart_cubit.dart';
 import '../../../common/widgets/custom_app_bar.dart';
 import '../../../common/widgets/custom_button.dart';
@@ -33,7 +34,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
   final _cardNumber = TextEditingController();
   final _expiry = TextEditingController();
   final _cvv = TextEditingController();
-  int _address = 0;
   int _payment = 0;
   bool _remember = true;
 
@@ -79,8 +79,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                     ),
                   ),
                   GestureDetector(
-                    // TODO: Go.to(context, Pager.newAddress) once it exists.
-                    onTap: () {},
+                    onTap: () => Go.to(context, Pager.newAddress()),
                     child: Text(
                       AppTexts.addNew,
                       style: AppTextStyles.body16Bold.copyWith(
@@ -92,16 +91,22 @@ class _CheckoutPageState extends State<CheckoutPage> {
               ),
             ),
             16.verticalSpace,
-            for (var i = 0; i < AddressModel.saved.length; i++) ...[
-              _padded(
-                AddressCard(
-                  address: AddressModel.saved[i],
-                  selected: i == _address,
-                  onTap: () => setState(() => _address = i),
-                ),
+            BlocBuilder<AddressCubit, AddressState>(
+              builder: (context, a) => Column(
+                children: [
+                  for (var i = 0; i < a.addresses.length; i++) ...[
+                    _padded(
+                      AddressCard(
+                        address: a.addresses[i],
+                        selected: i == a.selected,
+                        onTap: () => context.read<AddressCubit>().select(i),
+                      ),
+                    ),
+                    20.verticalSpace,
+                  ],
+                ],
               ),
-              20.verticalSpace,
-            ],
+            ),
             _padded(
               Text(
                 AppTexts.selectPaymentSystem,

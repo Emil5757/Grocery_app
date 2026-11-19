@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
 import '../../../core/constants/app_colors.dart';
-import '../../../core/constants/app_text_styles.dart';
-import '../../../core/constants/app_texts.dart';
 import '../../../core/navigation/go.dart';
 import '../../../core/navigation/pager.dart';
 import '../widgets/main_nav_bar.dart';
@@ -34,13 +32,7 @@ class _MainPageState extends State<MainPage> {
             Pager.home,
             Pager.category,
             Pager.favorites(onBack: () => _select(0)),
-            // TODO: replace with Pager.profile once the profile designs are built.
-            Center(
-              child: Text(
-                AppTexts.navProfile,
-                style: AppTextStyles.headline24Bold,
-              ),
-            ),
+            Pager.profile(onBack: () => _select(0)),
           ],
         ),
         bottomNavigationBar: MainNavBar(

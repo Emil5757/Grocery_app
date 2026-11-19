@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 
+import 'package:grocery_app/common/cubits/address/address_cubit.dart';
 import 'package:grocery_app/common/cubits/cart/cart_cubit.dart';
 import 'package:grocery_app/common/models/category_model.dart';
 import 'package:grocery_app/common/models/pack_model.dart';
@@ -20,8 +21,11 @@ Future<CartCubit> _pump(WidgetTester tester, Widget page, {CartCubit? cart}) asy
   await tester.pumpWidget(
     ScreenUtilInit(
       designSize: const Size(414, 896),
-      builder: (_, _) => BlocProvider.value(
-        value: cubit,
+      builder: (_, _) => MultiBlocProvider(
+        providers: [
+          BlocProvider.value(value: cubit),
+          BlocProvider(create: (_) => AddressCubit()),
+        ],
         child: MaterialApp(theme: AppThemes.light, home: page),
       ),
     ),
