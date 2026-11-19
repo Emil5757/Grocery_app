@@ -72,12 +72,16 @@ class CustomButton extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       if (icon != null) ...[icon!, 14.horizontalSpace],
-                      Text(
-                        text,
-                        style: (textStyle ?? AppTextStyles.button18Bold)
-                            .copyWith(
-                              color: enabled ? null : AppColors.textGrey,
-                            ),
+                      Flexible(
+                        child: Text(
+                          text,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: (textStyle ?? AppTextStyles.button18Bold)
+                              .copyWith(
+                                color: enabled ? null : AppColors.textGrey,
+                              ),
+                        ),
                       ),
                     ],
                   ),

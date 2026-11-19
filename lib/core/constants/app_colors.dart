@@ -48,6 +48,47 @@ abstract final class AppColors {
   static const Color cashNote = Color(0xFF7CAAE0);
   static const Color navShadow = Color(0x14000000);
 
+  // Profile header bubbles
+  static const Color headerBubbleLight = Color(0xFF60CC74);
+  static const Color headerBubbleSoft = Color(0xFF82CF85);
+
+  // Notification circles
+  static const Color notifyBlue = Color(0xFF3373F5);
+  static const Color notifyPink = Color(0xFFF51B84);
+  static const Color notifyGreen = Color(0xFF20BA79);
+  static const Color notifyRed = Color(0xFFF72020);
+
+  // Coupon tickets (Offer And Promos)
+  static const Color couponIndigo = Color(0xFF3F30BD);
+  static const Color couponBlue = Color(0xFF3B8FE9);
+  static const Color couponGreen = Color(0xFF30BD82);
+  static const Color couponCyan = Color(0xFF11C4DC);
+
+  // Promo cards (Offer And Promos grid)
+  static const Color promoPurple = Color(0xFFA24ABF);
+  static const Color promoNavy = Color(0xFF0E1155);
+  static const Color promoTeal = Color(0xFF137362);
+  static const Color promoBlue = Color(0xFF495FFF);
+  static const Color promoCrimson = Color(0xFFB03157);
+  static const Color promoOrange = Color(0xFFDB6F21);
+
+  /// Translucent white for buttons on coloured cards.
+  static const Color whiteOverlay = Color(0x33FFFFFF);
+
+  // Order timeline badge behind the white "processing" glyph
+  static const Color processingBadge = Color(0xFFEDC126);
+
+  // Avatar backgrounds (Review, Profile)
+  static const Color avatarPink = Color(0xFFFFC4C4);
+  static const Color avatarPeach = Color(0xFFFFE4BC);
+  static const Color avatarLilac = Color(0xFFEBC0F5);
+
+  /// Grey page behind the Delivered Successful card.
+  static const Color dimBackground = Color(0xFFB9B9B9);
+
+  // Map route
+  static const Color mapMarkerShadow = Color(0x26000000);
+
   /// Welcome photo fade: clear for the top ~44 %, then down to black.
   static const List<Color> welcomeGradient = [
     Color(0x00FFFFFF),

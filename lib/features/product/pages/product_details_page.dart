@@ -90,8 +90,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                 ],
               ),
-              // TODO: Go.to(context, Pager.review) once the review page exists.
-              onTap: () {},
+              onTap: () => Go.to(context, Pager.review),
             ),
           ],
         ),

@@ -1,31 +1,6 @@
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_texts.dart';
 
-class AddressModel {
-  const AddressModel({
-    required this.title,
-    required this.phone,
-    required this.address,
-  });
-
-  final String title;
-  final String phone;
-  final String address;
-
-  static const List<AddressModel> saved = [
-    AddressModel(
-      title: AppTexts.homeAddress,
-      phone: '(309) 071-9396-939',
-      address: '1749 Custom Road, Chhatak',
-    ),
-    AddressModel(
-      title: AppTexts.officeAddress,
-      phone: '(309)  071-9396-939',
-      address: '152 Nobab Road, Sylhet',
-    ),
-  ];
-}
-
 class PaymentMethodModel {
   const PaymentMethodModel({
     required this.name,

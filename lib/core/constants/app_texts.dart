@@ -177,6 +177,139 @@ abstract final class AppTexts {
       'Sorry you n’t haven’t placed\nany order yet.';
   static const String goBack = 'Go Back';
 
+  // Profile
+  static const String profile = 'Profile';
+  static String userId(String id) => 'ID: $id';
+  static const String allOrder = 'All Order';
+  static const String voucher = 'Voucher';
+  static const String address = 'Address';
+  static const String myProfile = 'My Profile';
+  static const String notification = 'Notificaion';
+  static const String setting = 'Setting';
+  static const String payment = 'Payment';
+  static const String logOut = 'Log Out';
+  static const String logOutConfirm = 'Do you want to log out?';
+  static const String firstName = 'Frist Name';
+  static const String lastName = 'Last Name';
+  static const String gender = 'Gender';
+  static const String birthday = 'Birthday';
+  static const String profileSaved = 'Profile saved';
+
+  // Settings
+  static const String language = 'Language';
+  static const String changePassword = 'Change Password';
+  static const String changePasswordTitle = 'Change Passsword';
+  static const String editHomeAddress = 'Edit Home Address';
+  static const String location = 'Location';
+  static const String profileSettings = 'Profile Settings';
+  static const String deactivateAccount = 'Deactivate Account';
+  static const String deactivateConfirm =
+      'Your account and order history will be removed. Continue?';
+  static const String currentPassword = 'Current Password';
+  static const String retypePasswordField = 'Re Taype Password';
+  static const String updatePassword = 'Update Password';
+  static const String changePhoneNumber = 'Change Phone Number';
+  static const String newPhoneNumber = 'New Phone Number';
+  static const String retypePhoneNumber = 'Re Taype Phone Number';
+  static const String updatePhoneNumber = 'Update Phone Number';
+  static const String phonesDontMatch = 'Phone numbers do not match';
+  static const String phoneUpdated = 'Phone number updated';
+  static const String selectLanguage = 'Select Language';
+  static const String suggested = 'Suggested';
+  static const String allCountries = 'All Countries/Regions';
+
+  // Notifications
+  static const String notificationTitle = 'Notification';
+  static const String appNotification = 'App Notification';
+  static const String phoneNotification = 'Phone Number Notification';
+  static const String offerNotification = 'Offer Notification';
+
+  // Orders
+  static const String myOrder = 'My Order';
+  static const String all = 'All';
+  static const String running = 'Running';
+  static const String previous = 'Previous';
+  static String tabCount(int n) => '($n)';
+  static const String orderIdLabel = 'Oreder ID:  ';
+  static const String statusLabel = 'Status:';
+  static const String confirmed = 'Confirmed';
+  static const String processing = 'Processing';
+  static const String shipped = 'Shipped';
+  static const String delivery = 'Delivery';
+  static const String cancelled = 'Cancel';
+  static const String myOrderDetails = 'My Order Details';
+  static String orderIdHash(String id) => 'Order id #$id';
+  static const String orderConfirmed = 'Order Confirmed';
+  static const String orderProcessing = 'Order Processing';
+  static const String orderShipped = 'Order Shipped';
+  static const String productDetailsTitle = 'Product Deatils';
+  static const String totalAmount = 'Total Amount';
+  static const String paidFrom = 'Paid From';
+  static const String creditCard = 'Credit Card';
+  static String timesQty(int q) => '${q}x';
+
+  // Tracking
+  static const String orderTracking = 'Order Tracking';
+  static const String yourDeliveryTime = 'Your Delivery Time';
+  static const String yourDeliveryAddress = 'Your Delivery Address';
+  static const String yourShipper = 'Your Shipper';
+  static const String osmAttribution = 'OpenStreetMap contributors';
+
+  // Addresses
+  static const String deliveryAddress = 'Delivery Address';
+  static const String newAddress = 'New Address';
+  static const String fullName = 'Full Name';
+  static const String addressLine1 = 'Address Link 1';
+  static const String addressLine2 = 'Address Link 2';
+  static const String city = 'City';
+  static const String state = 'State';
+  static const String zipCode = 'Zip Code';
+  static const String makeDefaultAddress = 'Make Default Default Shipping Address';
+  static const String saveAddress = 'Save Address';
+
+  // Coupons
+  static const String offerAndPromos = 'Offer And Promos';
+  static String couponsToUse(int n) => 'You Have $n Copons to use';
+  static String percentOff(int p) => '$p%';
+  static const String off = 'Off';
+  static String expiry(String date) => 'Exp-$date';
+  static String expiryLong(String date) => 'Exp $date';
+  static const String collect = 'Collect';
+  static const String collected = 'Collected';
+  static const String couponDetails = 'Coupon Details';
+  static String couponPitch(int p) =>
+      '$p% off only for you. To get this discount collect and apply the voucher.';
+  static const String redeemNow = 'Redeem Now';
+  static const String termsAndCondition = 'Terms and Condition';
+  static const String couponRedeemed = 'Coupon applied to your cart';
+  static const String discountLabel = 'Discount';
+
+  // Reviews
+  static const String reviewTitle = 'Review';
+  static String reviewsCount(int n) => '$n reviews';
+  static String starsLabel(int n) => '$n stars';
+  static String likes(int n) => '$n Like';
+  static const String reply = 'Reply';
+  static const String submitReview = 'Submit Review';
+  static const String rateQuestion = 'How would you rate the\nquality of this Products';
+  static const String leaveComment = 'Leave a your valuable\ncomments';
+  static const String commentHint =
+      'Irure velit sunt cupidatat nulla exercitation Lorem sint in ut eiusmod nisi.';
+  static const String submit = 'Submit';
+  static const String chooseRating = 'Tap a star to rate the product';
+  static const String reviewThanks = 'Thanks for your review!';
+
+  // Delivered
+  static const String congratulations = 'Congratulatios!';
+  static const String deliveredPrefix = 'Hurrah!!  we just deliverred your\n';
+  static String orderHash(String id) => '#$id';
+  static const String deliveredSuffix = ' order successfully.';
+  static const String rateTheProduct = 'Rate The Product';
+
+  // Error
+  static const String somethingWrong = 'oppss!! something wrong';
+  static const String somethingWrongSubtitle = 'Sorry, something went wrong\nplease try again .';
+
   // Buttons
   static const String logIn = 'Log In';
   static const String login = 'Login';
@@ -191,6 +324,8 @@ abstract final class AppTexts {
   static const String seeAll = 'See All';
   static const String resend = 'Resend';
   static const String done = 'Done';
+  static const String yes = 'Yes';
+  static const String no = 'No';
 
   // Fields
   static const String name = 'Name';

@@ -92,8 +92,7 @@ class _PackDetailsPageState extends State<PackDetailsPage> {
                   ),
                 ],
               ),
-              // TODO: Go.to(context, Pager.review) once the review page exists.
-              onTap: () {},
+              onTap: () => Go.to(context, Pager.review),
             ),
           ],
         ),
