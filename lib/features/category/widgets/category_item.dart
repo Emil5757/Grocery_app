@@ -34,12 +34,18 @@ class CategoryItem extends StatelessWidget {
               color: selected ? AppColors.primary : AppColors.background,
               shape: BoxShape.circle,
             ),
-            child: SvgPicture.asset(
-              category.icon,
-              width: 40.r,
-              height: 36.r,
-              colorFilter: (selected ? AppColors.white : AppColors.textPrimary)
-                  .toColorFilter,
+            // Fixed box + scaleDown: every icon keeps its natural size from
+            // the kit (the wide "Other" dots stay 36 x 9 instead of being
+            // stretched to the circle's width).
+            child: SizedBox(
+              width: 50.r,
+              height: 37.r,
+              child: SvgPicture.asset(
+                category.icon,
+                fit: BoxFit.scaleDown,
+                colorFilter: (selected ? AppColors.white : AppColors.textPrimary)
+                    .toColorFilter,
+              ),
             ),
           ),
           14.verticalSpace,

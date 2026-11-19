@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 import 'package:grocery_app/common/cubits/address/address_cubit.dart';
@@ -61,5 +62,25 @@ void main() {
     await tester.pump();
     expect(find.text('25 Like'), findsNothing);
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('review header fits a narrow 360 px phone', (tester) async {
+    await _pump(tester, Pager.review);
+    tester.view
+      ..physicalSize = const Size(1080, 1920) // 360 x 640 @3x
+      ..devicePixelRatio = 3;
+    await tester.pump();
+    expect(find.text('320 reviews'), findsOneWidget);
+    expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('"Other" category dots keep their natural size', (tester) async {
+    await _pump(tester, Pager.category);
+    final dots = tester.elementList(find.byType(SvgPicture)).firstWhere(
+      (e) => ((e.widget as SvgPicture).bytesLoader as SvgAssetLoader).assetName.contains('other'),
+    );
+    // Drawn at its natural 36 x 9 inside the 50 x 37 icon box, not stretched.
+    expect((dots.widget as SvgPicture).fit, BoxFit.scaleDown);
+    expect(dots.size!.width, lessThanOrEqualTo(50));
   });
 }
