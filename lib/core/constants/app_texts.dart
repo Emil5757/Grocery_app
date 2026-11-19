@@ -310,6 +310,26 @@ abstract final class AppTexts {
   static const String somethingWrong = 'oppss!! something wrong';
   static const String somethingWrongSubtitle = 'Sorry, something went wrong\nplease try again .';
 
+  // Menu & support pages (page copy lives in features/support/data/models)
+  static const String menu = 'Menu';
+  static const String inviteFriend = 'Invite Friend';
+  static const String aboutUs = 'About Us';
+  static const String faqs = 'FAQs';
+  static const String faq = 'FAQ';
+  static const String termsAndConditions = 'Terms & Conditions';
+  static const String helpCenter = 'Help Center';
+  static const String help = 'Help';
+  static const String rateThisApp = 'Rate This App';
+  static const String privacyPolicy = 'Privacy Policy';
+  static const String contactUs = 'Contact Us';
+  static const String logout = 'Logout';
+  static const String comingSoon = 'Coming soon';
+  static const String howCanWeHelp = 'Hi! How can we help?';
+  static const String topQuestions = 'Top Questions';
+  static const String topics = 'Topics';
+  static const String noHelpResults = 'No matching questions or topics';
+  static const String copiedToClipboard = 'Copied to clipboard';
+
   // Buttons
   static const String logIn = 'Log In';
   static const String login = 'Login';

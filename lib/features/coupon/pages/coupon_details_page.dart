@@ -11,6 +11,7 @@ import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
 import '../../../core/navigation/go.dart';
+import '../../../core/navigation/pager.dart';
 import '../data/models/coupon_model.dart';
 import '../widgets/coupon_ticket.dart';
 
@@ -75,8 +76,7 @@ class _CouponDetailsPageState extends State<CouponDetailsPage> {
             children: [
               CustomButton(text: AppTexts.redeemNow, onTap: _redeem),
               TextButton(
-                // TODO: Go.to(context, Pager.terms) once the Terms page is built.
-                onPressed: () {},
+                onPressed: () => Go.to(context, Pager.terms),
                 child: Text(AppTexts.termsAndCondition, style: AppTextStyles.body16Regular),
               ),
             ],
