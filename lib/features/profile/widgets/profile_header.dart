@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
+import '../../../common/models/user_model.dart';
 import '../../../common/widgets/custom_avatar.dart';
 import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/color_extensions.dart';
-import '../data/models/profile_model.dart';
 
 /// Green header with two soft bubbles, back arrow, "Profile", avatar with a
 /// camera badge, name and ID.
@@ -128,7 +128,7 @@ class ProfileHeader extends StatelessWidget {
   Widget _avatar() => Stack(
         clipBehavior: Clip.none,
         children: [
-          CustomAvatar(image: user.avatar, size: 90, background: AppColors.avatarPink),
+          CustomAvatar(image: user.avatar, photo: user.photo, size: 90, background: AppColors.avatarPink),
           Positioned(
             right: -6.r,
             bottom: -2.r,

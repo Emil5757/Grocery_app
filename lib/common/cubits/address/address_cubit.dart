@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../data/address_data.dart';
 import '../../models/address_model.dart';
 
 class AddressState {
@@ -16,7 +17,7 @@ class AddressState {
 /// Order Tracking all read or change them, so the Cubit is app-wide
 /// (provided above `MaterialApp`).
 class AddressCubit extends Cubit<AddressState> {
-  AddressCubit() : super(const AddressState(addresses: AddressModel.saved));
+  AddressCubit() : super(const AddressState(addresses: AddressData.saved));
 
   void select(int index) =>
       emit(AddressState(addresses: state.addresses, selected: index));

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/cubits/user/user_cubit.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../common/widgets/custom_card_scaffold.dart';
 import '../../../common/widgets/custom_text_field.dart';
@@ -35,6 +37,7 @@ class _ChangePhonePageState extends State<ChangePhonePage> {
     context.hideKeyboard();
     if (!_formKey.currentState!.validate()) return;
     // TODO: verify the new number with an OTP once a backend exists.
+    context.read<UserCubit>().updatePhone(_phone.text);
     context.showSnack(AppTexts.phoneUpdated);
     Go.back(context);
   }

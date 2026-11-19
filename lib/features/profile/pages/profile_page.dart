@@ -5,6 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/cubits/cart/cart_cubit.dart';
+import '../../../common/cubits/user/user_cubit.dart';
 import '../../../common/widgets/custom_confirm_dialog.dart';
 import '../../../common/widgets/custom_list_tile.dart';
 import '../../../common/widgets/custom_white_card.dart';
@@ -47,6 +48,7 @@ class ProfilePage extends StatelessWidget {
         );
         if (ok == true && context.mounted) {
           context.read<CartCubit>().clear();
+          context.read<UserCubit>().reset();
           Go.removeAll(context, Pager.welcome);
         }
     }
@@ -64,12 +66,11 @@ class ProfilePage extends StatelessWidget {
           child: Stack(
             children: [
               ProfileHeader(
-                user: UserModel.demo,
+                user: context.watch<UserCubit>().state,
                 height: headerHeight + 80.h,
                 onBack: onBack,
                 onMenu: () => Go.to(context, Pager.menu),
-                // TODO: pick a photo once an image picker is added.
-                onCameraTap: () {},
+                onCameraTap: () => Go.to(context, Pager.profilePhoto),
               ),
               Padding(
                 padding: EdgeInsets.fromLTRB(20.w, headerHeight, 20.w, 0),

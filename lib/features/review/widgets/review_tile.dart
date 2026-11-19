@@ -6,7 +6,7 @@ import '../../../common/widgets/custom_rating_stars.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
-import '../data/models/review_model.dart';
+import '../../../common/models/review_model.dart';
 
 /// Avatar | name + date, stars, text, Like / Reply.
 class ReviewTile extends StatelessWidget {
@@ -32,7 +32,7 @@ class ReviewTile extends StatelessWidget {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          CustomAvatar(image: review.avatar, background: review.avatarBackground),
+          CustomAvatar(image: review.avatar, photo: review.photo, background: review.avatarBackground),
           16.horizontalSpace,
           Expanded(
             child: Column(

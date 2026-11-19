@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/cubits/cart/cart_extension.dart';
-import '../../../common/models/product_model.dart';
+import '../../../common/data/product_data.dart';
 import '../../../common/widgets/custom_app_bar.dart';
 import '../../../common/widgets/custom_masonry_grid.dart';
 import '../../../common/widgets/custom_product_card.dart';
@@ -26,7 +26,7 @@ class NewItemsPage extends StatelessWidget {
         ),
         child: CustomMasonryGrid(
           children: [
-            for (final p in ProductModel.newItems)
+            for (final p in ProductData.newItems)
               CustomProductCard(
                 image: Image.asset(p.image),
                 name: p.name,

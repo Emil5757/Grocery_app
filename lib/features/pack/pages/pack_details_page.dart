@@ -92,7 +92,7 @@ class _PackDetailsPageState extends State<PackDetailsPage> {
                   ),
                 ],
               ),
-              onTap: () => Go.to(context, Pager.review),
+              onTap: () => Go.to(context, Pager.review(product: pack.asProduct)),
             ),
           ],
         ),

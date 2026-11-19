@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/cubits/user/user_cubit.dart';
+import '../../../common/models/user_model.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../common/widgets/custom_card_scaffold.dart';
 import '../../../common/widgets/custom_text_field.dart';
@@ -9,10 +12,9 @@ import '../../../core/extensions/context_extension.dart';
 import '../../../core/navigation/go.dart';
 import '../../../core/navigation/pager.dart';
 import '../../../core/utils/validator_utils.dart';
-import '../data/models/profile_model.dart';
 
-/// "Profile" form (My Profile). Phone and password open their own change
-/// screens.
+/// "Profile" form (My Profile). Starts from `UserCubit` and saves back to it;
+/// phone and password open their own change screens.
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({super.key});
 
@@ -29,7 +31,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   late final _birthday = TextEditingController(text: _user.birthday);
   final _password = TextEditingController(text: '**********');
 
-  static const _user = UserModel.demo;
+  late final UserModel _user = context.read<UserCubit>().state;
 
   @override
   void dispose() {
@@ -42,7 +44,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
   Future<void> _pickBirthday() async {
     final picked = await showDatePicker(
       context: context,
-      initialDate: DateTime(1990, 9, 5),
+      initialDate: _parseBirthday(_birthday.text) ?? DateTime(1990, 9, 5),
       firstDate: DateTime(1900),
       lastDate: DateTime.now(),
     );
@@ -51,51 +53,81 @@ class _EditProfilePageState extends State<EditProfilePage> {
     _birthday.text = '${two(picked.day)}.${two(picked.month)}.${picked.year}';
   }
 
+  /// "05.09.1990" -> DateTime, or null when it does not parse.
+  static DateTime? _parseBirthday(String text) {
+    final parts = text.split('.');
+    if (parts.length != 3) return null;
+    final d = int.tryParse(parts[0]),
+        m = int.tryParse(parts[1]),
+        y = int.tryParse(parts[2]);
+    if (d == null || m == null || y == null) return null;
+    return DateTime(y, m, d);
+  }
+
   void _save() {
     context.hideKeyboard();
     if (!_formKey.currentState!.validate()) return;
     // TODO: send to the backend once it exists.
+    context.read<UserCubit>().updateInfo(
+      firstName: _first.text,
+      lastName: _last.text,
+      gender: _gender.text,
+      birthday: _birthday.text,
+    );
     context.showSnack(AppTexts.profileSaved);
     Go.back(context);
   }
 
   @override
   Widget build(BuildContext context) {
-    return CustomCardScaffold(
-      title: AppTexts.profile,
-      child: Form(
-        key: _formKey,
-        child: Column(
-          children: [
-            CustomTextField(label: AppTexts.firstName, controller: _first, validator: ValidatorUtils.required),
-            24.verticalSpace,
-            CustomTextField(label: AppTexts.lastName, controller: _last, validator: ValidatorUtils.required),
-            24.verticalSpace,
-            CustomTextField(
-              label: AppTexts.phoneNumber,
-              controller: _phone,
-              readOnly: true,
-              onTap: () => Go.to(context, Pager.changePhone),
-            ),
-            24.verticalSpace,
-            CustomTextField(label: AppTexts.gender, controller: _gender),
-            24.verticalSpace,
-            CustomTextField(
-              label: AppTexts.birthday,
-              controller: _birthday,
-              readOnly: true,
-              onTap: _pickBirthday,
-            ),
-            24.verticalSpace,
-            CustomTextField(
-              label: AppTexts.password,
-              controller: _password,
-              readOnly: true,
-              onTap: () => Go.to(context, Pager.changePassword),
-            ),
-            30.verticalSpace,
-            CustomButton(text: AppTexts.save, onTap: _save),
-          ],
+    // Change Phone saves straight to the cubit; mirror it in the field.
+    return BlocListener<UserCubit, UserModel>(
+      listenWhen: (a, b) => a.phone != b.phone,
+      listener: (_, user) => _phone.text = user.phone,
+      child: CustomCardScaffold(
+        title: AppTexts.profile,
+        child: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              CustomTextField(
+                label: AppTexts.firstName,
+                controller: _first,
+                validator: ValidatorUtils.required,
+              ),
+              24.verticalSpace,
+              CustomTextField(
+                label: AppTexts.lastName,
+                controller: _last,
+                validator: ValidatorUtils.required,
+              ),
+              24.verticalSpace,
+              CustomTextField(
+                label: AppTexts.phoneNumber,
+                controller: _phone,
+                readOnly: true,
+                onTap: () => Go.to(context, Pager.changePhone),
+              ),
+              24.verticalSpace,
+              CustomTextField(label: AppTexts.gender, controller: _gender),
+              24.verticalSpace,
+              CustomTextField(
+                label: AppTexts.birthday,
+                controller: _birthday,
+                readOnly: true,
+                onTap: _pickBirthday,
+              ),
+              24.verticalSpace,
+              CustomTextField(
+                label: AppTexts.password,
+                controller: _password,
+                readOnly: true,
+                onTap: () => Go.to(context, Pager.changePassword),
+              ),
+              30.verticalSpace,
+              CustomButton(text: AppTexts.save, onTap: _save),
+            ],
+          ),
         ),
       ),
     );

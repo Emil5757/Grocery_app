@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/data/category_data.dart';
+import '../../../common/data/product_data.dart';
 import '../../../common/models/product_model.dart';
 import '../../../common/widgets/custom_app_bar.dart';
 import '../../../common/widgets/custom_masonry_grid.dart';
@@ -34,9 +36,10 @@ class _CreateMyPackPageState extends State<CreateMyPackPage> {
 
   @override
   Widget build(BuildContext context) {
-    final products = ProductModel.vegetables
-        .where((p) => p.name.toLowerCase().contains(_query.toLowerCase()))
-        .toList();
+    final products = ProductData.search(
+      _query,
+      from: ProductData.byCategory(CategoryData.shelves[_category].type),
+    );
     return Scaffold(
       appBar: const CustomAppBar(title: AppTexts.createMyPack),
       body: ListView(

@@ -72,7 +72,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
             24.verticalSpace,
             Text(AppTexts.productDetails, style: AppTextStyles.section18Bold),
             10.verticalSpace,
-            Text(AppTexts.productDescription, style: AppTextStyles.body16Grey),
+            Text(p.description ?? AppTexts.productDescription, style: AppTextStyles.body16Grey),
             16.verticalSpace,
             const Divider(),
             CustomListTile(
@@ -81,7 +81,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
               trailing: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const CustomRatingStars(rating: 5, size: 22),
+                  CustomRatingStars(rating: p.rating, size: 22),
                   8.horizontalSpace,
                   Icon(
                     Icons.chevron_right,
@@ -90,7 +90,7 @@ class _ProductDetailsPageState extends State<ProductDetailsPage> {
                   ),
                 ],
               ),
-              onTap: () => Go.to(context, Pager.review),
+              onTap: () => Go.to(context, Pager.review(product: p)),
             ),
           ],
         ),

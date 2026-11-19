@@ -1,38 +1,32 @@
-import '../../core/constants/app_assets.dart';
-import '../../core/constants/app_texts.dart';
+/// Which shelf a product sits on. Products point at a category by type, so
+/// renaming a category label never breaks the catalogue.
+enum CategoryType {
+  vegetables,
+  meatFish,
+  medicine,
+  babyCare,
+  office,
+  beauty,
+  gym,
+  gardening,
+  petCare,
+  eyeWears,
+  pack,
+  other,
+}
 
 /// Product category. Used by the category grid, Create My Pack chips and the
-/// filter sheet, so it lives in `common/`.
+/// filter sheet, so it lives in `common/`. The list is in `CategoryData`.
 class CategoryModel {
-  const CategoryModel({required this.name, required this.icon});
+  const CategoryModel({
+    required this.type,
+    required this.name,
+    required this.icon,
+  });
 
+  final CategoryType type;
   final String name;
-  final String icon;
 
-  static const List<CategoryModel> all = [
-    CategoryModel(
-      name: AppTexts.vegetables,
-      icon: AppAssets.icCategoryVegetables,
-    ),
-    CategoryModel(
-      name: AppTexts.meatAndFish,
-      icon: AppAssets.icCategoryMeatFish,
-    ),
-    CategoryModel(name: AppTexts.medicine, icon: AppAssets.icCategoryMedicine),
-    CategoryModel(name: AppTexts.babyCare, icon: AppAssets.icCategoryBabyCare),
-    CategoryModel(
-      name: AppTexts.officeSupplies,
-      icon: AppAssets.icCategoryOffice,
-    ),
-    CategoryModel(name: AppTexts.beauty, icon: AppAssets.icCategoryBeauty),
-    CategoryModel(name: AppTexts.gymEquipment, icon: AppAssets.icCategoryGym),
-    CategoryModel(
-      name: AppTexts.gardeningTools,
-      icon: AppAssets.icCategoryGardening,
-    ),
-    CategoryModel(name: AppTexts.petCare, icon: AppAssets.icCategoryPetCare),
-    CategoryModel(name: AppTexts.eyeWears, icon: AppAssets.icCategoryEyeWears),
-    CategoryModel(name: AppTexts.pack, icon: AppAssets.icBag),
-    CategoryModel(name: AppTexts.other, icon: AppAssets.icCategoryOther),
-  ];
+  /// SVG asset drawn in the category circle.
+  final String icon;
 }

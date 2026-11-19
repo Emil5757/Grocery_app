@@ -5,6 +5,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:grocery_app/common/cubits/address/address_cubit.dart';
 import 'package:grocery_app/common/cubits/cart/cart_cubit.dart';
+import 'package:grocery_app/common/cubits/review/review_cubit.dart';
+import 'package:grocery_app/common/cubits/search_history/search_history_cubit.dart';
+import 'package:grocery_app/common/cubits/user/user_cubit.dart';
 import 'package:grocery_app/core/constants/app_themes.dart';
 import 'package:grocery_app/core/navigation/pager.dart';
 import 'package:grocery_app/features/payment/pages/add_card_page.dart';
@@ -24,6 +27,9 @@ Future<void> _pump(WidgetTester tester, Widget page, {Size size = const Size(414
         providers: [
           BlocProvider(create: (_) => CartCubit()),
           BlocProvider(create: (_) => AddressCubit()),
+          BlocProvider(create: (_) => UserCubit()),
+          BlocProvider(create: (_) => ReviewCubit()),
+          BlocProvider(create: (_) => SearchHistoryCubit()),
         ],
         child: MaterialApp(theme: AppThemes.light, home: page),
       ),
