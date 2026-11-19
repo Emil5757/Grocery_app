@@ -111,4 +111,15 @@ abstract final class AppColors {
   ];
   static const List<double> welcomeGradientStops = [0, 0.2, 0.44, 1];
   static const Color shadow = Color(0x1A40AA54);
+
+  // Bank cards (Payment Option, Add New Card)
+  static const Color cardNavy = Color(0xFF2A4664);
+  static const Color cardBlue = Color(0xFF5A93D8);
+  static const Color cardPink = Color(0xFFF7A1CB);
+  static const Color cardTeal = Color(0xFF5BD8B1);
+  static const Color cardIndigo = Color(0xFF292C6D);
+  static const Color cardGreen = Color(0xFF5AD887);
+  static const Color cardMint = Color(0xFFBDFDEA);
+  static const Color cardDeepGreen = Color(0xFF449E7A);
+  static const Color applePay = Color(0xFF4A8FF5);
 }

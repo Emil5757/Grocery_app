@@ -39,8 +39,7 @@ class ProfilePage extends StatelessWidget {
       case ProfileAction.setting:
         Go.to(context, Pager.setting);
       case ProfileAction.payment:
-        // TODO: open saved payment methods once that design is available.
-        break;
+        Go.to(context, Pager.paymentOption);
       case ProfileAction.logOut:
         final ok = await Go.dialog<bool>(
           context,
@@ -68,6 +67,7 @@ class ProfilePage extends StatelessWidget {
                 user: UserModel.demo,
                 height: headerHeight + 80.h,
                 onBack: onBack,
+                onMenu: () => Go.to(context, Pager.menu),
                 // TODO: pick a photo once an image picker is added.
                 onCameraTap: () {},
               ),

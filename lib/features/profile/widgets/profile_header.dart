@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/widgets/custom_avatar.dart';
+import '../../../core/constants/app_assets.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
+import '../../../core/extensions/color_extensions.dart';
 import '../data/models/profile_model.dart';
 
 /// Green header with two soft bubbles, back arrow, "Profile", avatar with a
@@ -15,12 +18,16 @@ class ProfileHeader extends StatelessWidget {
     required this.user,
     required this.height,
     this.onBack,
+    this.onMenu,
     this.onCameraTap,
   });
 
   final UserModel user;
   final double height;
   final VoidCallback? onBack;
+
+  /// Top-right button that opens the Menu (drawer) page.
+  final VoidCallback? onMenu;
   final VoidCallback? onCameraTap;
 
   @override
@@ -62,6 +69,19 @@ class ProfileHeader extends StatelessWidget {
                         AppTexts.profile,
                         style: AppTextStyles.title20Bold.copyWith(color: AppColors.white),
                       ),
+                      if (onMenu != null)
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: IconButton(
+                            tooltip: AppTexts.menu,
+                            onPressed: onMenu,
+                            icon: SvgPicture.asset(
+                              AppAssets.icNavMenu,
+                              height: 24.r,
+                              colorFilter: AppColors.white.toColorFilter,
+                            ),
+                          ),
+                        ),
                     ],
                   ),
                 ),
