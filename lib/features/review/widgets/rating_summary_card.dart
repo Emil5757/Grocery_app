@@ -5,7 +5,7 @@ import '../../../common/widgets/custom_rating_stars.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/constants/app_texts.dart';
-import '../data/models/review_model.dart';
+import '../../../common/models/review_model.dart';
 
 /// Green "4.5" disc, review count and stars | five green progress bars.
 class RatingSummaryCard extends StatelessWidget {
@@ -35,7 +35,7 @@ class RatingSummaryCard extends StatelessWidget {
                   shape: BoxShape.circle,
                 ),
                 child: Text(
-                  '${summary.average}',
+                  summary.averageLabel,
                   style: AppTextStyles.headline24Bold.copyWith(
                     color: AppColors.white,
                   ),

@@ -86,6 +86,13 @@ abstract final class AppTexts {
   static const String recentSearches = 'Recent Searches';
   static const String searchResults = 'Search Results';
   static String productsFound(int count) => '$count Products Found';
+  static const String noProductsFound = 'No products found';
+  static const String noProductsHint = 'Try another word or clear the filters.';
+  static const String clearAll = 'Clear All';
+  static const String clearFilters = 'Clear filters';
+  static String filtersOn(int n) => n == 1 ? '1 filter on' : '$n filters on';
+  static const String removeSearch = 'Remove from recent searches';
+  static const String useSearch = 'Put in the search box';
   static const String filter = 'Filter';
   static const String sortBy = 'Sort By';
   static const String popularity = 'Popularity';
@@ -195,6 +202,17 @@ abstract final class AppTexts {
   static const String birthday = 'Birthday';
   static const String profileSaved = 'Profile saved';
 
+  // Profile photo
+  static const String profilePhoto = 'Profile Photo';
+  static const String profilePhotoHint = 'Pick a clear photo of your face. You can move and zoom it to fit the circle.';
+  static const String takePhoto = 'Take Photo';
+  static const String chooseFromGallery = 'Choose from Gallery';
+  static const String removePhoto = 'Remove Photo';
+  static const String cropPhoto = 'Crop Photo';
+  static const String photoUpdated = 'Profile photo updated';
+  static const String photoPickFailed = 'Could not open the photo. Check the app permissions.';
+  static const String changePhoto = 'Change profile photo';
+
   // Settings
   static const String language = 'Language';
   static const String changePassword = 'Change Password';
@@ -298,6 +316,8 @@ abstract final class AppTexts {
   static const String submit = 'Submit';
   static const String chooseRating = 'Tap a star to rate the product';
   static const String reviewThanks = 'Thanks for your review!';
+  static const String justNow = 'Just now';
+  static const String you = 'You';
 
   // Delivered
   static const String congratulations = 'Congratulatios!';

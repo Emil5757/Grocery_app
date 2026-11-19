@@ -8,6 +8,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:grocery_app/common/cubits/address/address_cubit.dart';
 import 'package:grocery_app/common/cubits/cart/cart_cubit.dart';
+import 'package:grocery_app/common/cubits/review/review_cubit.dart';
+import 'package:grocery_app/common/cubits/search_history/search_history_cubit.dart';
+import 'package:grocery_app/common/cubits/user/user_cubit.dart';
 import 'package:grocery_app/common/models/address_model.dart';
 import 'package:grocery_app/core/constants/app_themes.dart';
 import 'package:grocery_app/core/navigation/pager.dart';
@@ -29,7 +32,7 @@ class _NoNetworkTiles extends TileProvider {
   ImageProvider getImage(TileCoordinates coordinates, TileLayer options) => MemoryImage(_blank);
 }
 
-Future<void> _pump(WidgetTester tester, Widget page, {AddressCubit? addresses, CartCubit? cart}) async {
+Future<void> _pump(WidgetTester tester, Widget page, {AddressCubit? addresses, CartCubit? cart, UserCubit? user}) async {
   tester.view
     ..physicalSize = const Size(1242, 2688) // 414 x 896 @3x
     ..devicePixelRatio = 3;
@@ -41,6 +44,9 @@ Future<void> _pump(WidgetTester tester, Widget page, {AddressCubit? addresses, C
         providers: [
           BlocProvider.value(value: cart ?? CartCubit()),
           BlocProvider.value(value: addresses ?? AddressCubit()),
+          BlocProvider.value(value: user ?? UserCubit()),
+          BlocProvider(create: (_) => ReviewCubit()),
+          BlocProvider(create: (_) => SearchHistoryCubit()),
         ],
         child: MaterialApp(theme: AppThemes.light, home: page),
       ),

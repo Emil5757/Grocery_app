@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+import '../../../common/models/category_model.dart';
 import '../../../common/widgets/custom_bottom_sheet.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../common/widgets/custom_chip.dart';
@@ -12,31 +13,33 @@ import '../../../core/navigation/go.dart';
 import '../data/models/search_model.dart';
 
 /// Filter Popup / Filter Full: sort, price range, categories, brand, rating.
-/// Pops with a [FilterResult].
+/// Starts from [initial] and pops with the new [FilterResult].
 class FilterSheet extends StatefulWidget {
-  const FilterSheet({super.key});
+  const FilterSheet({super.key, this.initial = FilterResult.none});
+
+  final FilterResult initial;
 
   @override
   State<FilterSheet> createState() => _FilterSheetState();
 }
 
 class _FilterSheetState extends State<FilterSheet> {
-  static const _initialRange = RangeValues(20, 80);
+  static const _fullRange = RangeValues(SearchModel.minPrice, SearchModel.maxPrice);
 
-  int _sort = 0;
-  RangeValues _range = _initialRange;
-  final Set<String> _categories = {
-    AppTexts.officeSupplies,
-    AppTexts.vegetables,
-  };
-  final Set<String> _brands = {AppTexts.any, AppTexts.aciLimited};
-  int _rating = 4;
-  bool _allCategories = false;
-  bool _allBrands = false;
+  late SortOption _sort = widget.initial.sortBy;
+  late RangeValues _range = RangeValues(widget.initial.minPrice, widget.initial.maxPrice);
+  late final Set<CategoryType> _categories = {...widget.initial.categories};
+  late final Set<String> _brands = {...widget.initial.brands};
+  late int _rating = widget.initial.rating;
+  // Open "See All" straight away when a hidden chip is already selected.
+  late bool _allCategories = SearchModel.categories
+      .skip(3)
+      .any((c) => _categories.contains(c.type));
+  late bool _allBrands = SearchModel.brands.skip(3).any(_brands.contains);
 
   void _reset() => setState(() {
-    _sort = 0;
-    _range = _initialRange;
+    _sort = SortOption.popularity;
+    _range = _fullRange;
     _categories.clear();
     _brands
       ..clear()
@@ -47,11 +50,11 @@ class _FilterSheetState extends State<FilterSheet> {
   void _apply() => Go.back(
     context,
     FilterResult(
-      sortBy: SearchModel.sortOptions[_sort],
-      minPrice: _range.start,
-      maxPrice: _range.end,
-      categories: _categories,
-      brands: _brands,
+      sortBy: _sort,
+      minPrice: _range.start.roundToDouble(),
+      maxPrice: _range.end.roundToDouble(),
+      categories: {..._categories},
+      brands: {..._brands},
       rating: _rating,
     ),
   );
@@ -78,7 +81,7 @@ class _FilterSheetState extends State<FilterSheet> {
               Text(AppTexts.categories, style: AppTextStyles.section18SemiBold),
               16.verticalSpace,
               _chips(
-                SearchModel.categories,
+                [for (final c in SearchModel.categories) (c.label, c.type)],
                 _categories,
                 _allCategories,
                 () => setState(() => _allCategories = true),
@@ -87,7 +90,7 @@ class _FilterSheetState extends State<FilterSheet> {
               Text(AppTexts.brand, style: AppTextStyles.section18SemiBold),
               16.verticalSpace,
               _chips(
-                SearchModel.brands,
+                [for (final b in SearchModel.brands) (b, b)],
                 _brands,
                 _allBrands,
                 () => setState(() => _allBrands = true),
@@ -114,25 +117,19 @@ class _FilterSheetState extends State<FilterSheet> {
       Expanded(
         child: Text(AppTexts.sortBy, style: AppTextStyles.section18SemiBold),
       ),
-      PopupMenuButton<int>(
+      PopupMenuButton<SortOption>(
         initialValue: _sort,
         onSelected: (v) => setState(() => _sort = v),
         itemBuilder: (_) => [
-          for (var i = 0; i < SearchModel.sortOptions.length; i++)
+          for (final o in SortOption.values)
             PopupMenuItem(
-              value: i,
-              child: Text(
-                SearchModel.sortOptions[i],
-                style: AppTextStyles.body16Regular,
-              ),
+              value: o,
+              child: Text(o.label, style: AppTextStyles.body16Regular),
             ),
         ],
         child: Row(
           children: [
-            Text(
-              SearchModel.sortOptions[_sort],
-              style: AppTextStyles.section18SemiBold,
-            ),
+            Text(_sort.label, style: AppTextStyles.section18SemiBold),
             6.horizontalSpace,
             Icon(
               Icons.keyboard_arrow_down,
@@ -198,10 +195,11 @@ class _FilterSheetState extends State<FilterSheet> {
     ],
   );
 
-  /// 3-column chip grid; "See All" reveals the rest.
-  Widget _chips(
-    List<String> options,
-    Set<String> selected,
+  /// 3-column chip grid; "See All" reveals the rest. Options are
+  /// (label, value) pairs.
+  Widget _chips<T>(
+    List<(String, T)> options,
+    Set<T> selected,
     bool showAll,
     VoidCallback onSeeAll,
   ) {
@@ -214,16 +212,16 @@ class _FilterSheetState extends State<FilterSheet> {
           spacing: gap,
           runSpacing: 14.h,
           children: [
-            for (final o in visible)
+            for (final (label, value) in visible)
               SizedBox(
                 width: width,
                 child: CustomChip(
-                  label: o,
-                  isSelected: selected.contains(o),
+                  label: label,
+                  isSelected: selected.contains(value),
                   onTap: () => setState(
-                    () => selected.contains(o)
-                        ? selected.remove(o)
-                        : selected.add(o),
+                    () => selected.contains(value)
+                        ? selected.remove(value)
+                        : selected.add(value),
                   ),
                 ),
               ),

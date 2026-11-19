@@ -22,6 +22,7 @@ import '../../features/profile/pages/change_phone_page.dart';
 import '../../features/profile/pages/edit_profile_page.dart';
 import '../../features/profile/pages/language_page.dart';
 import '../../features/profile/pages/profile_page.dart';
+import '../../features/profile/pages/profile_photo_page.dart';
 import '../../features/profile/pages/setting_page.dart';
 import '../../common/models/pack_model.dart';
 import '../../common/models/product_model.dart';
@@ -50,6 +51,7 @@ import '../../features/pack/pages/pack_details_page.dart';
 import '../../features/pack/pages/popular_pack_page.dart';
 import '../../features/product/pages/new_items_page.dart';
 import '../../features/product/pages/product_details_page.dart';
+import '../../features/search/data/models/search_model.dart';
 import '../../features/search/pages/search_page.dart';
 import '../../features/search/pages/search_result_page.dart';
 import '../../features/splash/pages/splash_page.dart';
@@ -75,7 +77,7 @@ import '../../features/wishlist/pages/favorite_page.dart';
 ///                 deliveryAddress -to-> newAddress, editProfile, notifications,
 ///                 setting -to-> language / changePassword / changePhone,
 ///                 paymentOption -to-> addCard (pops the new card),
-///                 menu (header button)
+///                 menu (header button), profilePhoto (camera badge)
 ///       orderSuccess / setting(Location) / notifications -to-> orderTracking
 ///       productDetails / packDetails -to-> review -to-> submitReview
 ///       notifications -to-> delivered -replace-> submitReview | -removeAll-> main
@@ -107,7 +109,8 @@ abstract final class Pager {
 
   // Browse
   static const Widget search = SearchPage();
-  static Widget searchResult(String query) => SearchResultPage(query: query);
+  static Widget searchResult(String query, {FilterResult filter = FilterResult.none}) =>
+      SearchResultPage(query: query, filter: filter);
   static Widget categoryProducts(CategoryModel category) =>
       CategoryProductsPage(category: category);
   static Widget productDetails(ProductModel product) =>
@@ -135,6 +138,7 @@ abstract final class Pager {
   // Profile & account
   static Widget profile({VoidCallback? onBack}) => ProfilePage(onBack: onBack);
   static const Widget editProfile = EditProfilePage();
+  static const Widget profilePhoto = ProfilePhotoPage();
   static const Widget setting = SettingPage();
   static const Widget changePassword = ChangePasswordPage();
   static const Widget changePhone = ChangePhonePage();
@@ -159,8 +163,8 @@ abstract final class Pager {
   static Widget couponDetails(CouponModel coupon) => CouponDetailsPage(coupon: coupon);
 
   // Reviews
-  static const Widget review = ReviewPage();
-  static const Widget submitReview = SubmitReviewPage();
+  static Widget review({ProductModel? product}) => ReviewPage(product: product);
+  static Widget submitReview({ProductModel? product}) => SubmitReviewPage(product: product);
 
   // Menu & support
   static const Widget menu = MenuPage();

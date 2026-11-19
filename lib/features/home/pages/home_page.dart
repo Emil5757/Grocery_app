@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/cubits/cart/cart_extension.dart';
-import '../../../common/models/pack_model.dart';
-import '../../../common/models/product_model.dart';
+import '../../../common/data/pack_data.dart';
+import '../../../common/data/product_data.dart';
 import '../../../common/widgets/custom_masonry_grid.dart';
 import '../../../common/widgets/custom_product_card.dart';
 import '../../../common/widgets/custom_search_field.dart';
@@ -56,7 +56,7 @@ class HomePage extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  for (final pack in PackModel.homePacks) ...[
+                  for (final pack in PackData.homePacks) ...[
                     SizedBox(
                       width: 183.w,
                       child: CustomProductCard(
@@ -87,7 +87,7 @@ class HomePage extends StatelessWidget {
               padding: padding,
               child: CustomMasonryGrid(
                 children: [
-                  for (final p in ProductModel.homeNewItems)
+                  for (final p in ProductData.homeNewItems)
                     CustomProductCard(
                       image: Image.asset(p.image),
                       name: p.name,

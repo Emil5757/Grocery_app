@@ -56,7 +56,7 @@ class DeliveredPage extends StatelessWidget {
                     50.verticalSpace,
                     CustomButton(
                       text: AppTexts.rateTheProduct,
-                      onTap: () => Go.replace(context, Pager.submitReview),
+                      onTap: () => Go.replace(context, Pager.submitReview()),
                     ),
                     24.verticalSpace,
                     CustomOutlinedButton(

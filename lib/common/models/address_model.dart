@@ -1,7 +1,7 @@
 import 'package:latlong2/latlong.dart';
 
 /// A delivery address. Used by checkout, Delivery Address, New Address and
-/// Order Tracking, so it lives in `common/`.
+/// Order Tracking, so it lives in `common/`. Mock addresses: `AddressData`.
 class AddressModel {
   const AddressModel({
     required this.title,
@@ -29,25 +29,4 @@ class AddressModel {
   final LatLng location;
 
   static const LatLng chhatak = LatLng(25.0287, 91.6566);
-
-  static const List<AddressModel> saved = [
-    AddressModel(
-      title: 'Puraton Custom, Chhatak',
-      address: '216/c East Road',
-      phone: '+8801710071000',
-      location: LatLng(25.022583, 91.660773),
-    ),
-    AddressModel(
-      title: 'Thana Ghat Road, Chhatak',
-      address: '216/c East Road',
-      phone: '+8801710071000',
-      location: LatLng(25.021419, 91.663286),
-    ),
-    AddressModel(
-      title: 'Bus Stand, Chhatak',
-      address: '216/c East Road',
-      phone: '+8801710071000',
-      location: LatLng(25.030254, 91.661022),
-    ),
-  ];
 }

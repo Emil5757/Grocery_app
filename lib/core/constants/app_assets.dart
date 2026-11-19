@@ -95,6 +95,40 @@ abstract final class AppAssets {
   static const String tunaFish = '$_products/tuna_fish.png';
   static const String vanillaIceCream = '$_products/vanilla_ice_cream.png';
 
+  // Catalogue photos from Wikimedia Commons (credits: assets/CREDITS.md)
+  static const String chicken = '$_products/chicken.png';
+  static const String shrimp = '$_products/shrimp.png';
+  static const String painRelief = '$_products/pain_relief.png';
+  static const String vitaminC = '$_products/vitamin_c.png';
+  static const String coughSyrup = '$_products/cough_syrup.png';
+  static const String firstAid = '$_products/first_aid.png';
+  static const String babyWipes = '$_products/baby_wipes.png';
+  static const String feedingBottle = '$_products/feeding_bottle.png';
+  static const String notebook = '$_products/notebook.png';
+  static const String pens = '$_products/pens.png';
+  static const String stapler = '$_products/stapler.png';
+  static const String stickyNotes = '$_products/sticky_notes.png';
+  static const String lipstick = '$_products/lipstick.png';
+  static const String shampoo = '$_products/shampoo.png';
+  static const String faceCream = '$_products/face_cream.png';
+  static const String bodyLotion = '$_products/body_lotion.png';
+  static const String dumbbells = '$_products/dumbbells.png';
+  static const String yogaMat = '$_products/yoga_mat.png';
+  static const String vinylDumbbells = '$_products/vinyl_dumbbells.png';
+  static const String kettlebell = '$_products/kettlebell.png';
+  static const String wateringCan = '$_products/watering_can.png';
+  static const String trowel = '$_products/trowel.png';
+  static const String pruningShears = '$_products/pruning_shears.png';
+  static const String gardenGloves = '$_products/garden_gloves.png';
+  static const String dogFood = '$_products/dog_food.png';
+  static const String catFood = '$_products/cat_food.png';
+  static const String petBall = '$_products/pet_ball.png';
+  static const String petCollar = '$_products/pet_collar.png';
+  static const String sunglasses = '$_products/sunglasses.png';
+  static const String eyeglasses = '$_products/eyeglasses.png';
+  static const String readingGlasses = '$_products/reading_glasses.png';
+  static const String lensCase = '$_products/lens_case.png';
+
   // Packs
   static const String packBigFruits = '$_products/pack_big_fruits.png';
   static const String packBigSpices = '$_products/pack_big_spices.png';

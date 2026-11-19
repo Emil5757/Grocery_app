@@ -1,39 +1,6 @@
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_texts.dart';
 
-/// The signed-in user (demo data until there is a backend).
-class UserModel {
-  const UserModel({
-    required this.firstName,
-    required this.lastName,
-    required this.id,
-    required this.phone,
-    required this.gender,
-    required this.birthday,
-    this.avatar = AppAssets.avatarRonti,
-  });
-
-  final String firstName;
-  final String lastName;
-  final String id;
-  final String phone;
-  final String gender;
-  final String birthday;
-  final String avatar;
-
-  String get fullName => '$firstName $lastName';
-  String get initials => '${firstName[0]}${lastName[0]}';
-
-  static const demo = UserModel(
-    firstName: 'Shakibul',
-    lastName: 'Islam',
-    id: '1540580',
-    phone: '+8801710000000',
-    gender: 'Male',
-    birthday: '05.09.1990',
-  );
-}
-
 enum ProfileAction {
   orders,
   voucher,

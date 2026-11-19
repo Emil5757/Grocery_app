@@ -6,9 +6,12 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:grocery_app/common/cubits/address/address_cubit.dart';
 import 'package:grocery_app/common/cubits/cart/cart_cubit.dart';
-import 'package:grocery_app/common/models/category_model.dart';
-import 'package:grocery_app/common/models/pack_model.dart';
-import 'package:grocery_app/common/models/product_model.dart';
+import 'package:grocery_app/common/cubits/review/review_cubit.dart';
+import 'package:grocery_app/common/cubits/search_history/search_history_cubit.dart';
+import 'package:grocery_app/common/cubits/user/user_cubit.dart';
+import 'package:grocery_app/common/data/category_data.dart';
+import 'package:grocery_app/common/data/pack_data.dart';
+import 'package:grocery_app/common/data/product_data.dart';
 import 'package:grocery_app/core/constants/app_assets.dart';
 import 'package:grocery_app/core/constants/app_themes.dart';
 import 'package:grocery_app/core/navigation/pager.dart';
@@ -26,6 +29,9 @@ Future<CartCubit> _pump(WidgetTester tester, Widget page, {CartCubit? cart}) asy
         providers: [
           BlocProvider.value(value: cubit),
           BlocProvider(create: (_) => AddressCubit()),
+          BlocProvider(create: (_) => UserCubit()),
+          BlocProvider(create: (_) => ReviewCubit()),
+          BlocProvider(create: (_) => SearchHistoryCubit()),
         ],
         child: MaterialApp(theme: AppThemes.light, home: page),
       ),
@@ -39,14 +45,14 @@ void main() {
   group('CartCubit', () {
     test('adds, merges, updates and totals', () {
       final cart = CartCubit()
-        ..add(ProductModel.potato)
-        ..add(ProductModel.potato, quantity: 2)
-        ..add(ProductModel.tomato);
+        ..add(ProductData.potato)
+        ..add(ProductData.potato, quantity: 2)
+        ..add(ProductData.tomato);
       expect(cart.state.items.length, 2);
       expect(cart.state.totalItems, 4);
       expect(cart.state.subtotal, 12 * 3 + 12);
 
-      cart.setQuantity(ProductModel.tomato, 0);
+      cart.setQuantity(ProductData.tomato, 0);
       expect(cart.state.items.length, 1);
 
       expect(cart.applyCoupon('nope'), isFalse);
@@ -60,13 +66,13 @@ void main() {
     'main': () => Pager.main,
     'search': () => Pager.search,
     'searchResult': () => Pager.searchResult('Grocey Product'),
-    'categoryProducts': () => Pager.categoryProducts(CategoryModel.all.first),
-    'productDetails': () => Pager.productDetails(ProductModel.broccoli),
+    'categoryProducts': () => Pager.categoryProducts(CategoryData.all.first),
+    'productDetails': () => Pager.productDetails(ProductData.broccoli),
     'newItems': () => Pager.newItems,
     'popularPack': () => Pager.popularPack,
-    'packDetails': () => Pager.packDetails(PackModel.popular.first),
+    'packDetails': () => Pager.packDetails(PackData.popular.first),
     'createMyPack': () => Pager.createMyPack,
-    'bundleDetails': () => Pager.bundleDetails({ProductModel.cauliflower: 2, ProductModel.tomato: 1}),
+    'bundleDetails': () => Pager.bundleDetails({ProductData.cauliflower: 2, ProductData.tomato: 1}),
     'cart (empty)': () => Pager.cart,
     'checkout': () => Pager.checkout,
     'orderSuccess': () => Pager.orderSuccess,
@@ -81,7 +87,7 @@ void main() {
   }
 
   testWidgets('cart with items renders and checkout pays', (tester) async {
-    final cart = CartCubit()..add(ProductModel.potato, quantity: 2);
+    final cart = CartCubit()..add(ProductData.potato, quantity: 2);
     await _pump(tester, Pager.cart, cart: cart);
     expect(find.text('Checkout'), findsOneWidget);
     expect(tester.takeException(), isNull);

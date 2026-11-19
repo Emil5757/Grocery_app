@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/cubits/cart/cart_cubit.dart';
+import '../../../common/cubits/user/user_cubit.dart';
 import '../../../common/widgets/custom_confirm_dialog.dart';
 import '../../../core/constants/app_texts.dart';
 import '../../../core/extensions/context_extension.dart';
@@ -40,6 +41,7 @@ class MenuPage extends StatelessWidget {
         );
         if (ok == true && context.mounted) {
           context.read<CartCubit>().clear();
+          context.read<UserCubit>().reset();
           Go.removeAll(context, Pager.welcome);
         }
     }

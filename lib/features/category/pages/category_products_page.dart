@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../common/cubits/cart/cart_extension.dart';
+import '../../../common/data/product_data.dart';
 import '../../../common/models/category_model.dart';
-import '../../../common/models/product_model.dart';
 import '../../../common/widgets/custom_app_bar.dart';
 import '../../../common/widgets/custom_masonry_grid.dart';
 import '../../../common/widgets/custom_product_card.dart';
@@ -11,8 +11,7 @@ import '../../../core/constants/app_sizes.dart';
 import '../../../core/navigation/go.dart';
 import '../../../core/navigation/pager.dart';
 
-/// Products of one category ("Vegetables"). Demo data: every category shows
-/// the vegetables list until there is a backend.
+/// Products of one category ("Vegetables"), from the mock catalogue.
 class CategoryProductsPage extends StatelessWidget {
   const CategoryProductsPage({super.key, required this.category});
 
@@ -29,7 +28,7 @@ class CategoryProductsPage extends StatelessWidget {
         ),
         child: CustomMasonryGrid(
           children: [
-            for (final p in ProductModel.vegetables)
+            for (final p in ProductData.byCategory(category.type))
               CustomProductCard(
                 image: Image.asset(p.image),
                 name: p.name,

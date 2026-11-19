@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/cubits/cart/cart_extension.dart';
+import '../../../common/data/product_data.dart';
 import '../../../common/models/product_model.dart';
 import '../../../common/widgets/custom_app_bar.dart';
 import '../../../common/widgets/custom_empty_state.dart';
@@ -24,7 +25,7 @@ class FavoritePage extends StatefulWidget {
 }
 
 class _FavoritePageState extends State<FavoritePage> {
-  final List<ProductModel> _items = [...ProductModel.favorites];
+  final List<ProductModel> _items = [...ProductData.favorites];
 
   @override
   Widget build(BuildContext context) {

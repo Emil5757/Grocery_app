@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 
+import '../../../../common/data/product_data.dart';
 import '../../../../common/models/product_model.dart';
 import '../../../../core/constants/app_assets.dart';
 import '../../../../core/constants/app_colors.dart';
@@ -52,9 +53,9 @@ class OrderModel {
   num get total => lines.fold<num>(0, (s, l) => s + l.total);
 
   static const List<OrderLine> demoLines = [
-    OrderLine(product: ProductModel.papaya, name: 'Fresh Papaya Form The Farmer', weight: '3KG', quantity: 3, total: 30),
-    OrderLine(product: ProductModel.tunaFish, name: 'Fresh Tuna Fish Form The Sea', weight: '1 KG', quantity: 5, total: 50),
-    OrderLine(product: ProductModel.meat, name: 'Fresh Meat Form The Farmer', weight: '1 KG', quantity: 5, total: 50),
+    OrderLine(product: ProductData.papaya, name: 'Fresh Papaya Form The Farmer', weight: '3KG', quantity: 3, total: 30),
+    OrderLine(product: ProductData.tunaFish, name: 'Fresh Tuna Fish Form The Sea', weight: '1 KG', quantity: 5, total: 50),
+    OrderLine(product: ProductData.meat, name: 'Fresh Meat Form The Farmer', weight: '1 KG', quantity: 5, total: 50),
   ];
 
   static const List<OrderModel> all = [

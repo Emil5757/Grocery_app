@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../common/cubits/cart/cart_extension.dart';
-import '../../../common/models/pack_model.dart';
+import '../../../common/data/pack_data.dart';
 import '../../../common/widgets/custom_app_bar.dart';
 import '../../../common/widgets/custom_button.dart';
 import '../../../common/widgets/custom_masonry_grid.dart';
@@ -36,7 +36,7 @@ class PopularPackPage extends StatelessWidget {
             ),
             child: CustomMasonryGrid(
               children: [
-                for (final pack in PackModel.popular)
+                for (final pack in PackData.popular)
                   CustomProductCard(
                     image: Image.asset(pack.image),
                     name: pack.name,

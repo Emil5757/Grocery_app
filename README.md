@@ -50,12 +50,18 @@ lib/
 │   │   ├── go.dart      Go.to / replace / removeAll / back / sheet / dialog
 │   │   └── pager.dart   registry of every page
 │   └── utils/
-│       └── validator_utils.dart   required, phone, password, confirmPassword, otp
+│       ├── validator_utils.dart     required, phone, password, otp, card number / expiry, cvv
+│       └── image_picker_util.dart   pick (camera / gallery) + crop to a circle → bytes
 ├── common/
 │   ├── widgets/            design-system widgets used by 2+ features
-│   ├── models/             data shared by many features: ProductModel, PackModel, CategoryModel
+│   ├── models/             shapes shared by many features: ProductModel, PackModel,
+│   │                       CategoryModel (+ CategoryType), AddressModel, UserModel,
+│   │                       ReviewModel
+│   ├── data/               mock data (no backend yet): ProductData, CategoryData,
+│   │                       PackData, AddressData, UserData, ReviewData, SearchData
 │   └── cubits/             app-wide state, provided above MaterialApp in main.dart:
-│                           cart/ (CartCubit), address/ (AddressCubit)
+│                           cart/ (CartCubit), address/ (AddressCubit), user/ (UserCubit),
+│                           review/ (ReviewCubit), search_history/ (SearchHistoryCubit)
 └── features/<domain>/
     ├── pages/              <name>_page.dart, one screen each
     ├── widgets/            pieces only this feature uses
@@ -166,6 +172,60 @@ Common widgets take plain values and callbacks, never feature models, so
 3. Build `features/<x>/pages/<name>_page.dart` from `Custom*` widgets first.
 4. Register it in `Pager`, then navigate with `Go.to / replace / removeAll`.
 5. Run `flutter analyze`.
+
+## Mock data
+
+There is no backend yet. Data used by more than one feature lives in
+`lib/common/data/`; edit it there and every screen follows:
+
+| File | What to change |
+|---|---|
+| `product_data.dart` | every product: name, unit, price, old price, photo, category, description. `ProductData.all` is the catalogue; `byCategory()` and `search()` feed Category, Search Result and Create My Pack. Home "New Item", New Items and the starting Favourites are lists at the bottom. |
+| `category_data.dart` | the "Choose a Category" grid (order, label, icon). `shelves` = every category except Pack. |
+| `pack_data.dart` | Popular Pack and the home pack row. |
+| `address_data.dart` | the saved delivery addresses. |
+| `user_data.dart` | the signed-in user on start (name, ID, phone, gender, birthday, portrait). |
+| `review_data.dart` | the mock reviews and the 4.5 / 320 rating summary shown under every product. |
+| `search_data.dart` | the Recent Searches on a fresh start. |
+
+Data only one feature uses stays in that feature (`features/<x>/data/models/`):
+orders, coupons, notifications, reviews, payment cards, tracking.
+
+Edits made in the app live in Cubits until the app restarts: `UserCubit`
+(Edit Profile, Change Phone, Profile Photo), `ReviewCubit` (submitted
+reviews: they appear on top of that product's Review page, under your name
+and photo, and update the summary), `SearchHistoryCubit` (Recent Searches),
+`AddressCubit`, `CartCubit`.
+
+Search filters the catalogue live as you type; Enter opens Search Results.
+The filter sheet applies sort, price range, categories and minimum rating
+(`FilterResult.apply`). Brand is shown but mock products have no brand yet.
+
+To add a product: put the PNG in `assets/images/products/`, add its path to
+`AppAssets`, add a `ProductModel` to `ProductData` and list it in `all`.
+
+### Product photos
+
+The original photos come from the design kit. The extra products for
+Medicine, Baby Care, Office, Beauty, Gym, Gardening, Pet Care, Eye Wears and
+Meat & Fish are free-licence photos from Wikimedia Commons. Their authors and
+licences are in `assets/CREDITS.md`; keep that file with the images (CC BY
+and CC BY-SA photos must stay credited).
+
+## Profile photo
+
+Profile → camera badge opens **Profile Photo**: take a photo or choose one,
+crop it to a circle ([`image_picker`](https://pub.dev/packages/image_picker) +
+[`image_cropper`](https://pub.dev/packages/image_cropper), wrapped in
+`ImagePickerUtil`), then Save. The photo is kept as bytes in `UserCubit`, so it
+also works on web. Platform setup already done:
+
+- Android: `UCropActivity` in `android/app/src/main/AndroidManifest.xml`.
+- iOS: `NSCameraUsageDescription` and `NSPhotoLibraryUsageDescription` in `Info.plist`.
+- Web: cropperjs 1.6.2 in `web/index.html`.
+
+`image_cropper` 13 needs Flutter 3.47+, so the project uses 12.x until the SDK
+is upgraded.
 
 ## Maps
 

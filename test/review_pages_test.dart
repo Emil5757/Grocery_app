@@ -6,6 +6,9 @@ import 'package:flutter_test/flutter_test.dart';
 
 import 'package:grocery_app/common/cubits/address/address_cubit.dart';
 import 'package:grocery_app/common/cubits/cart/cart_cubit.dart';
+import 'package:grocery_app/common/cubits/review/review_cubit.dart';
+import 'package:grocery_app/common/cubits/search_history/search_history_cubit.dart';
+import 'package:grocery_app/common/cubits/user/user_cubit.dart';
 import 'package:grocery_app/core/constants/app_themes.dart';
 import 'package:grocery_app/core/navigation/pager.dart';
 
@@ -21,6 +24,9 @@ Future<void> _pump(WidgetTester tester, Widget page) async {
         providers: [
           BlocProvider(create: (_) => CartCubit()),
           BlocProvider(create: (_) => AddressCubit()),
+          BlocProvider(create: (_) => UserCubit()),
+          BlocProvider(create: (_) => ReviewCubit()),
+          BlocProvider(create: (_) => SearchHistoryCubit()),
         ],
         child: MaterialApp(theme: AppThemes.light, home: page),
       ),
@@ -31,8 +37,8 @@ Future<void> _pump(WidgetTester tester, Widget page) async {
 
 void main() {
   final pages = <String, Widget Function()>{
-    'review': () => Pager.review,
-    'submitReview': () => Pager.submitReview,
+    'review': () => Pager.review(),
+    'submitReview': () => Pager.submitReview(),
     'delivered': () => Pager.delivered,
     'error': () => Pager.error(),
   };
@@ -44,7 +50,7 @@ void main() {
   }
 
   testWidgets('submit review needs a rating first', (tester) async {
-    await _pump(tester, Pager.submitReview);
+    await _pump(tester, Pager.submitReview());
     await tester.ensureVisible(find.text('Submit'));
     await tester.tap(find.text('Submit'));
     await tester.pump();
@@ -53,7 +59,7 @@ void main() {
   });
 
   testWidgets('liking a review toggles its count', (tester) async {
-    await _pump(tester, Pager.review);
+    await _pump(tester, Pager.review());
     // The first review starts liked: 24 + 1.
     expect(find.text('25 Like'), findsOneWidget);
     await tester.ensureVisible(find.text('25 Like'));
@@ -65,7 +71,7 @@ void main() {
   });
 
   testWidgets('review header fits a narrow 360 px phone', (tester) async {
-    await _pump(tester, Pager.review);
+    await _pump(tester, Pager.review());
     tester.view
       ..physicalSize = const Size(1080, 1920) // 360 x 640 @3x
       ..devicePixelRatio = 3;
