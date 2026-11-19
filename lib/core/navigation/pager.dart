@@ -41,6 +41,8 @@ import '../../features/checkout/pages/order_success_page.dart';
 import '../../features/home/pages/home_page.dart';
 import '../../features/main/pages/main_page.dart';
 import '../../features/onboarding/pages/onboarding_page.dart';
+import '../../features/payment/pages/add_card_page.dart';
+import '../../features/payment/pages/payment_option_page.dart';
 import '../../features/orders/pages/no_orders_page.dart';
 import '../../features/pack/pages/bundle_details_page.dart';
 import '../../features/pack/pages/create_my_pack_page.dart';
@@ -71,7 +73,9 @@ import '../../features/wishlist/pages/favorite_page.dart';
 ///       main tabs: home | category | favorites | profile
 ///       profile -to-> myOrders -to-> orderDetails, offers -to-> couponDetails,
 ///                 deliveryAddress -to-> newAddress, editProfile, notifications,
-///                 setting -to-> language / changePassword / changePhone
+///                 setting -to-> language / changePassword / changePhone,
+///                 paymentOption -to-> addCard (pops the new card),
+///                 menu (header button)
 ///       orderSuccess / setting(Location) / notifications -to-> orderTracking
 ///       productDetails / packDetails -to-> review -to-> submitReview
 ///       notifications -to-> delivered -replace-> submitReview | -removeAll-> main
@@ -123,6 +127,10 @@ abstract final class Pager {
   static const Widget orderSuccess = OrderSuccessPage();
   static const Widget orderFailed = OrderFailedPage();
   static const Widget noOrders = NoOrdersPage();
+
+  // Payment
+  static const Widget paymentOption = PaymentOptionPage();
+  static const Widget addCard = AddCardPage();
 
   // Profile & account
   static Widget profile({VoidCallback? onBack}) => ProfilePage(onBack: onBack);

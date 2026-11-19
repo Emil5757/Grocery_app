@@ -40,6 +40,12 @@ abstract final class ValidatorUtils {
     return RegExp(r'^\d{2}/\d{2}/\d{4}$').hasMatch(value) ? null : AppTexts.invalidExpiry;
   }
 
+  /// MM/YY, as on the Add New Card design.
+  static String? cardExpiry(String? value) {
+    if (value == null || value.isEmpty) return AppTexts.fieldRequired;
+    return RegExp(r'^(0[1-9]|1[0-2])/\d{2}$').hasMatch(value) ? null : AppTexts.invalidCardExpiry;
+  }
+
   static String? cvv(String? value) {
     if (value == null || value.isEmpty) return AppTexts.fieldRequired;
     return RegExp(r'^\d{3,4}$').hasMatch(value) ? null : AppTexts.invalidCvv;

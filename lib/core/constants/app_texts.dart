@@ -363,4 +363,20 @@ abstract final class AppTexts {
   static const String invalidCardNumber = 'Enter a valid card number';
   static const String invalidExpiry = 'Use DD/MM/YYYY';
   static const String invalidCvv = 'Enter 3 or 4 digits';
+  static const String invalidCardExpiry = 'Use MM/YY';
+
+  // Payment (Payment Option, Add New Card)
+  static const String paymentOption = 'Payment Option';
+  static const String myCard = 'My Card';
+  static const String otherPaymentOption = 'Other Payment Option';
+  static const String addNewCard = 'Add New Card';
+  static const String addCard = 'Add Card';
+  static const String cardAdded = 'Card added';
+  static const String applePay = 'Apple Pay';
+  static const String applePaySite = 'applepay.com';
+  static const String payInCash = 'Pay In Cash';
+  static const String paypalEmail = 'Mypaypal@gmail.com';
+  static const String expDate = 'EXP DATE';
+  static const String visa = 'VISA';
+  static const String monthYearHint = 'MM/YY';
 }

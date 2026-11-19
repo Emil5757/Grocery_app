@@ -9,6 +9,7 @@ import 'package:grocery_app/common/cubits/cart/cart_cubit.dart';
 import 'package:grocery_app/common/models/category_model.dart';
 import 'package:grocery_app/common/models/pack_model.dart';
 import 'package:grocery_app/common/models/product_model.dart';
+import 'package:grocery_app/core/constants/app_assets.dart';
 import 'package:grocery_app/core/constants/app_themes.dart';
 import 'package:grocery_app/core/navigation/pager.dart';
 
@@ -99,7 +100,10 @@ void main() {
 
   testWidgets('filter sheet opens, expands and applies', (tester) async {
     await _pump(tester, Pager.search);
-    await tester.tap(find.byType(SvgPicture)); // the green filter button's icon
+    // The green filter button's icon.
+    await tester.tap(find.byWidgetPredicate((w) =>
+        w is SvgPicture && w.bytesLoader is SvgAssetLoader &&
+        (w.bytesLoader as SvgAssetLoader).assetName == AppAssets.icFilter));
     await tester.pumpAndSettle();
     expect(find.text('Apply Filter'), findsOneWidget);
     await tester.tap(find.text('See All').first);
