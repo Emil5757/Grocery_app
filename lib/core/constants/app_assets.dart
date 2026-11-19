@@ -19,6 +19,15 @@ abstract final class AppAssets {
   static const String icArrowRight = '$_icons/ic_arrow_right.svg';
   static const String icMasterCard = '$_icons/ic_master_card.svg';
   static const String icPaypal = '$_icons/ic_paypal.svg';
+  static const String icBackArrow = '$_icons/ic_back_arrow.svg';
+  static const String icChevronRight = '$_icons/ic_chevron_right.svg';
+  static const String icSearchOutline = '$_icons/ic_search_outline.svg';
+
+  // Contact Us (green glyph inside a green ring, 30 x 30)
+  static const String icContactPhone = '$_icons/ic_contact_phone.svg';
+  static const String icContactEmail = '$_icons/ic_contact_email.svg';
+  static const String icContactLocation = '$_icons/ic_contact_location.svg';
+  static const String icMapPin = '$_icons/ic_map_pin.svg';
 
   // Bottom navigation
   static const String icNavHome = '$_icons/ic_nav_home.svg';
@@ -62,6 +71,9 @@ abstract final class AppAssets {
 
   // Photos
   static const String welcomeBackground = '$_images/welcome_background.png';
+
+  /// Street map on Contact Us (1614 x 844, drawn at 730 x 382 and cropped).
+  static const String contactMap = '$_images/contact_map.png';
 
   // Products (PNG, max 600 px)
   static const String _products = '$_images/products';

@@ -57,6 +57,20 @@ abstract final class AppTextStyles {
   static TextStyle get body16GreyCompact =>
       _style(16, FontWeight.w400, color: AppColors.textGrey, height: 1.4);
 
+  // Info pages (About, FAQ, Terms, Contact). Explicit line heights keep
+  // the spacing measured from the designs even in the fallback font.
+  // Grey paragraph on a 24 px line
+  static TextStyle get paragraph16Muted =>
+      _style(16, FontWeight.w400, color: AppColors.textMuted, height: 1.5);
+  // "About Us", FAQ questions, "Contact Us" (24 px line)
+  static TextStyle get title20BoldTight => _style(20, FontWeight.w700, height: 1.2);
+  // Terms heading and section titles (20 px lines)
+  static TextStyle get body16BoldTight => _style(16, FontWeight.w700, height: 1.25);
+  // Contact Us lines (20 px)
+  static TextStyle get body16Tight => _style(16, FontWeight.w400, height: 1.25);
+  static TextStyle get body16Tertiary =>
+      _style(16, FontWeight.w400, color: AppColors.textTertiary, height: 1.25);
+
   // Small: labels, weights, nav labels
   static TextStyle get label14Medium => _style(14, FontWeight.w500);
   static TextStyle get label14Regular => _style(14, FontWeight.w400);

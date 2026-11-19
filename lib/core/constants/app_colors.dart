@@ -52,6 +52,19 @@ abstract final class AppColors {
   static const Color headerBubbleLight = Color(0xFF60CC74);
   static const Color headerBubbleSoft = Color(0xFF82CF85);
 
+  // Info pages (Menu, About, FAQ, Terms, Help, Contact). The designs set
+  // both fill-opacity and opacity, so the alphas below are the products.
+  /// Paragraph grey: #8B8B97 at 0.8 x 0.8.
+  static const Color textMuted = Color(0xA38B8B97);
+  /// Chevrons and Contact phone numbers: #16162E at 0.7.
+  static const Color textPrimary70 = Color(0xB316162E);
+  /// Contact e-mail and address.
+  static const Color textTertiary = Color(0xFF5C5C6D);
+  /// Help search placeholder: #8B8B97 at 0.5 x 0.5.
+  static const Color searchHint = Color(0x408B8B97);
+  /// Behind the Contact map while it loads.
+  static const Color mapBackground = Color(0xFFF1F1F1);
+
   // Notification circles
   static const Color notifyBlue = Color(0xFF3373F5);
   static const Color notifyPink = Color(0xFFF51B84);

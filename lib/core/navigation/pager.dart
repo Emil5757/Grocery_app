@@ -51,6 +51,12 @@ import '../../features/product/pages/product_details_page.dart';
 import '../../features/search/pages/search_page.dart';
 import '../../features/search/pages/search_result_page.dart';
 import '../../features/splash/pages/splash_page.dart';
+import '../../features/support/pages/about_us_page.dart';
+import '../../features/support/pages/contact_us_page.dart';
+import '../../features/support/pages/faq_page.dart';
+import '../../features/support/pages/help_page.dart';
+import '../../features/support/pages/menu_page.dart';
+import '../../features/support/pages/terms_page.dart';
 import '../../features/wishlist/pages/favorite_page.dart';
 
 /// Registry of every destination. Add each new page here as a
@@ -74,6 +80,8 @@ import '../../features/wishlist/pages/favorite_page.dart';
 ///       home -to-> popularPack -to-> createMyPack -to-> bundleDetails -replace-> cart
 ///       home / popularPack -to-> packDetails -to-> cart
 ///       cart -to-> checkout -removeAll-> orderSuccess (or -to-> orderFailed)
+///       menu -to-> aboutUs | faq | terms | help | contactUs, Logout -removeAll-> welcome
+///       help (any row) -to-> faq; couponDetails -to-> terms
 abstract final class Pager {
   // Auth
   static const Widget splash = SplashPage();
@@ -145,6 +153,14 @@ abstract final class Pager {
   // Reviews
   static const Widget review = ReviewPage();
   static const Widget submitReview = SubmitReviewPage();
+
+  // Menu & support
+  static const Widget menu = MenuPage();
+  static const Widget aboutUs = AboutUsPage();
+  static const Widget faq = FaqPage();
+  static const Widget terms = TermsPage();
+  static const Widget help = HelpPage();
+  static const Widget contactUs = ContactUsPage();
 
   // Results
   static const Widget delivered = DeliveredPage();
