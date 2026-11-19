@@ -35,14 +35,16 @@ class ReviewModel {
 
 /// The 4.5 / 320 reviews / per-star bars header.
 class RatingSummary {
-  const RatingSummary({required this.average, required this.counts});
+  const RatingSummary({required this.average, required this.total, required this.counts});
 
   final double average;
+
+  /// Number of written reviews ("320 reviews"). Not the sum of [counts]:
+  /// star-only ratings are counted in the bars but have no review text.
+  final int total;
 
   /// Index 0 = 5 stars … index 4 = 1 star.
   final List<int> counts;
 
-  int get total => counts.fold(0, (a, b) => a + b);
-
-  static const demo = RatingSummary(average: 4.5, counts: [200, 150, 90, 30, 20]);
+  static const demo = RatingSummary(average: 4.5, total: 320, counts: [200, 150, 90, 30, 20]);
 }
